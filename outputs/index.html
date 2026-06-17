@@ -1,0 +1,3126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT Career Roles & Certification Roadmap</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #080b10;
+      --panel: #101722;
+      --panel-2: #151e2b;
+      --panel-3: #1b2635;
+      --text: #edf4ff;
+      --muted: #9cadc2;
+      --line: rgba(148, 163, 184, 0.2);
+      --accent: #66e3ff;
+      --good: #6ee7a8;
+      --warn: #ffd166;
+      --rose: #ff7ab6;
+      --violet: #b79cff;
+      --blue: #7db4ff;
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 15% 8%, rgba(102, 227, 255, 0.14), transparent 26rem),
+        radial-gradient(circle at 84% 0%, rgba(255, 122, 182, 0.12), transparent 25rem),
+        linear-gradient(145deg, #07090d 0%, #0b1119 45%, #0a0d14 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    .app {
+      width: min(1500px, 100%);
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    header {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) minmax(340px, 560px);
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.8rem);
+      line-height: 0.95;
+      letter-spacing: 0;
+    }
+
+    .summary {
+      margin: 12px 0 0;
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .metric {
+      min-width: 0;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02)),
+        rgba(16, 23, 34, 0.58);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      padding: 16px;
+      backdrop-filter: blur(18px) saturate(150%);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.55rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.3;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(230px, 360px) 1fr;
+      gap: 14px;
+      align-items: start;
+      margin-bottom: 16px;
+    }
+
+    .searchWrap {
+      position: relative;
+    }
+
+    .searchWrap svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      width: 18px;
+      height: 18px;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    input[type="search"] {
+      width: 100%;
+      height: 46px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      outline: none;
+      background: rgba(16, 23, 34, 0.9);
+      color: var(--text);
+      padding: 0 14px 0 42px;
+      font-size: 0.95rem;
+    }
+
+    input[type="search"]:focus {
+      border-color: rgba(102, 227, 255, 0.7);
+      box-shadow: 0 0 0 4px rgba(102, 227, 255, 0.09);
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      justify-content: flex-end;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(21, 30, 43, 0.82);
+      color: var(--muted);
+      padding: 10px 13px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 160ms ease;
+      white-space: nowrap;
+    }
+
+    .filter:hover,
+    .filter.active {
+      border-color: var(--color, var(--accent));
+      color: var(--text);
+      background: color-mix(in srgb, var(--color, var(--accent)) 18%, rgba(21, 30, 43, 0.9));
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(350px, 430px);
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .mapPanel,
+    .detailPanel {
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+        rgba(11, 16, 24, 0.72);
+      box-shadow: var(--shadow);
+      border-radius: 8px;
+      overflow: hidden;
+      backdrop-filter: blur(20px) saturate(150%);
+    }
+
+    .mapHead {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(16, 23, 34, 0.72);
+    }
+
+    .mapHead h2,
+    .detailPanel h2 {
+      margin: 0;
+      font-size: 0.96rem;
+      letter-spacing: 0;
+    }
+
+    .mapHint {
+      color: var(--muted);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
+    .legend {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 8px;
+      padding: 12px 14px 0;
+    }
+
+    .legendItem {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.045);
+      padding: 9px 10px;
+      color: #d8e6f7;
+      font-size: 0.76rem;
+      font-weight: 800;
+      backdrop-filter: blur(14px);
+    }
+
+    .legendSwatch {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--legend-color);
+      box-shadow: 0 0 16px var(--legend-color);
+    }
+
+    .canvasShell {
+      position: relative;
+      height: clamp(900px, 86vh, 1180px);
+      min-height: 420px;
+    }
+
+    canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      touch-action: none;
+      user-select: none;
+    }
+
+    .emptyState {
+      position: absolute;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 24px;
+      color: var(--muted);
+      text-align: center;
+      pointer-events: none;
+    }
+
+    .emptyState.show {
+      display: grid;
+    }
+
+    .detailPanel {
+      display: flex;
+      flex-direction: column;
+      min-height: 640px;
+    }
+
+    .detailTop {
+      padding: 18px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(21, 30, 43, 0.92), rgba(16, 23, 34, 0.72));
+    }
+
+    .categoryPill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid color-mix(in srgb, var(--role-color) 58%, transparent);
+      border-radius: 999px;
+      color: var(--text);
+      background: color-mix(in srgb, var(--role-color) 17%, transparent);
+      padding: 7px 10px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+
+    .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--role-color);
+      box-shadow: 0 0 18px var(--role-color);
+    }
+
+    .detailTop h2 {
+      margin: 14px 0 8px;
+      font-size: 1.75rem;
+      line-height: 1.12;
+    }
+
+    .description {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .detailBody {
+      overflow: auto;
+      padding: 18px;
+    }
+
+    .viewTabs {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 8px;
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(8, 11, 16, 0.34);
+    }
+
+    .viewTab {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.045);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-weight: 900;
+      padding: 10px 8px;
+      transition: 160ms ease;
+    }
+
+    .viewTab:hover,
+    .viewTab.active {
+      border-color: var(--role-color);
+      background: color-mix(in srgb, var(--role-color) 17%, rgba(255, 255, 255, 0.045));
+      color: #fff;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .glassCard {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
+        rgba(21, 30, 43, 0.5);
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+      backdrop-filter: blur(18px) saturate(150%);
+      padding: 14px;
+    }
+
+    .section h3 {
+      margin: 0 0 10px;
+      font-size: 0.82rem;
+      color: #cbd8ea;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+
+    .chips,
+    .certs,
+    .related {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip,
+    .cert,
+    .related button {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 10px;
+      color: #d8e6f7;
+      background: rgba(21, 30, 43, 0.72);
+      font-size: 0.78rem;
+      line-height: 1.1;
+    }
+
+    .cert {
+      border-color: color-mix(in srgb, var(--role-color) 50%, rgba(255, 255, 255, 0.1));
+      background: linear-gradient(145deg, color-mix(in srgb, var(--role-color) 18%, #151e2b), rgba(21, 30, 43, 0.7));
+      font-weight: 800;
+    }
+
+    .related button {
+      cursor: pointer;
+    }
+
+    .related button:hover {
+      border-color: var(--role-color);
+      color: #fff;
+    }
+
+    .skillTree {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .tier {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(21, 30, 43, 0.52);
+      min-width: 0;
+      padding: 12px;
+    }
+
+    .tierLabel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: 0.79rem;
+      font-weight: 900;
+    }
+
+    .tierLabel span {
+      width: 20px;
+      height: 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--role-color) 24%, #1b2635);
+      color: var(--role-color);
+      font-size: 0.72rem;
+    }
+
+    .tier ul,
+    .section ul,
+    .path {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .tier li,
+    .section li,
+    .path li {
+      position: relative;
+      margin: 0 0 8px;
+      padding-left: 15px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.38;
+    }
+
+    .tier li::before,
+    .section li::before,
+    .path li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.58em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--role-color);
+      box-shadow: 0 0 10px var(--role-color);
+    }
+
+    .path {
+      counter-reset: path;
+      display: grid;
+      gap: 8px;
+    }
+
+    .path li {
+      counter-increment: path;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px 10px 10px 42px;
+      background: rgba(21, 30, 43, 0.52);
+    }
+
+    .path li::before {
+      content: counter(path);
+      top: 8px;
+      left: 10px;
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      color: #071016;
+      font-size: 0.74rem;
+      font-weight: 900;
+    }
+
+    .certGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 10px;
+    }
+
+    .certCard {
+      min-width: 0;
+    }
+
+    .certCard strong,
+    .compareCard strong {
+      display: block;
+      color: #fff;
+      font-size: 0.92rem;
+      line-height: 1.25;
+    }
+
+    .certCard span,
+    .compareCard span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
+
+    .skillMatrix {
+      display: grid;
+      gap: 10px;
+    }
+
+    .skillRow {
+      display: grid;
+      grid-template-columns: 115px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .skillRowLabel {
+      border-left: 3px solid var(--role-color);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 900;
+      padding: 8px 0 8px 10px;
+    }
+
+    .comparisonWrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(21, 30, 43, 0.4);
+    }
+
+    .comparisonTable {
+      width: 100%;
+      min-width: 720px;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+    }
+
+    .comparisonTable th,
+    .comparisonTable td {
+      border-bottom: 1px solid var(--line);
+      padding: 11px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .comparisonTable th {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.055);
+      font-size: 0.75rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .comparisonTable td {
+      color: var(--muted);
+      line-height: 1.38;
+    }
+
+    .compareCards {
+      display: none;
+      gap: 10px;
+    }
+
+    .compareCard {
+      border-left: 3px solid var(--card-color);
+    }
+
+    .roleList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .roleList button {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(16, 23, 34, 0.9);
+      color: var(--muted);
+      padding: 9px 10px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      transition: 160ms ease;
+    }
+
+    .roleList button:hover,
+    .roleList button.active {
+      color: #fff;
+      border-color: var(--btn-color);
+      background: color-mix(in srgb, var(--btn-color) 16%, rgba(16, 23, 34, 0.95));
+    }
+
+    @media (max-width: 1120px) {
+      header,
+      .dashboard {
+        grid-template-columns: 1fr;
+      }
+
+      .detailPanel {
+        min-height: 0;
+      }
+
+      .detailBody {
+        max-height: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .app {
+        padding: 16px;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 4px;
+      }
+
+      .metrics,
+      .skillTree {
+        grid-template-columns: 1fr;
+      }
+
+      .viewTabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .skillRow {
+        grid-template-columns: 1fr;
+      }
+
+      .comparisonWrap {
+        display: none;
+      }
+
+      .compareCards {
+        display: grid;
+      }
+
+      .canvasShell {
+        height: 3180px;
+      }
+
+      .mapHead {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .mapHint {
+        white-space: normal;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .filter {
+        padding: 9px 11px;
+      }
+
+      .detailTop h2 {
+        font-size: 1.45rem;
+      }
+    }
+
+    /* Roadmap board redesign */
+    body {
+      background:
+        radial-gradient(circle at 78% 5%, rgba(141, 66, 255, 0.18), transparent 25rem),
+        radial-gradient(circle at 28% 12%, rgba(29, 185, 255, 0.16), transparent 27rem),
+        linear-gradient(135deg, #07101f 0%, #0b1221 46%, #080b16 100%);
+    }
+
+    .app {
+      width: 100%;
+      max-width: 1440px;
+      overflow-x: hidden;
+      padding: 18px;
+    }
+
+    .roadmapShell {
+      display: grid;
+      grid-template-columns: 196px minmax(0, 1fr);
+      gap: 20px;
+      max-width: 100%;
+      min-height: calc(100vh - 36px);
+    }
+
+    .sideRail {
+      position: sticky;
+      top: 18px;
+      height: calc(100vh - 36px);
+      border-right: 1px solid rgba(148, 163, 184, 0.18);
+      padding: 14px 14px 14px 0;
+    }
+
+    .brandMini {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 30px;
+      padding-left: 10px;
+    }
+
+    .brandIcon,
+    .statIcon,
+    .roleIcon {
+      display: grid;
+      place-items: center;
+      border-radius: 10px;
+      color: var(--icon-color, #28d7ff);
+      background: color-mix(in srgb, var(--icon-color, #28d7ff) 18%, rgba(255, 255, 255, 0.05));
+      box-shadow: inset 0 0 22px color-mix(in srgb, var(--icon-color, #28d7ff) 18%, transparent), 0 12px 32px rgba(0, 0, 0, 0.28);
+    }
+
+    .brandIcon {
+      width: 44px;
+      height: 44px;
+    }
+
+    .brandMini strong {
+      display: none;
+    }
+
+    .sideLabel {
+      margin: 0 0 10px;
+      padding-left: 10px;
+      color: rgba(237, 244, 255, 0.62);
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+
+    .filters {
+      display: grid;
+      gap: 8px;
+      justify-content: stretch;
+    }
+
+    .filter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 8px;
+      background: transparent;
+      color: #d8e2f0;
+      padding: 10px 12px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-align: left;
+      white-space: normal;
+    }
+
+    .filter::before {
+      content: "";
+      width: 14px;
+      height: 14px;
+      flex: 0 0 auto;
+      border: 1.5px solid var(--color, #28d7ff);
+      border-radius: 4px;
+      box-shadow: 0 0 12px color-mix(in srgb, var(--color, #28d7ff) 42%, transparent);
+    }
+
+    .filter:hover,
+    .filter.active {
+      background: linear-gradient(90deg, color-mix(in srgb, var(--color, #28d7ff) 28%, rgba(255, 255, 255, 0.12)), rgba(255, 255, 255, 0.03));
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .roadmapMain {
+      width: 100%;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    header {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow,
+    .summary {
+      display: none;
+    }
+
+    h1 {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      line-height: 1.15;
+    }
+
+    h1::before {
+      content: "";
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+      background:
+        linear-gradient(rgba(40, 215, 255, 0.2), rgba(40, 215, 255, 0.08)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%2328d7ff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='14' rx='2'/%3E%3Cpath d='M8 20h8'/%3E%3Cpath d='M12 18v2'/%3E%3Cpath d='M9 11h6'/%3E%3Cpath d='M12 8v6'/%3E%3C/svg%3E") center/28px 28px no-repeat;
+      box-shadow: inset 0 0 18px rgba(40, 215, 255, 0.22), 0 0 24px rgba(40, 215, 255, 0.16);
+      flex: 0 0 auto;
+    }
+
+    .metrics {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .metric {
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 82px;
+      border-color: rgba(148, 163, 184, 0.24);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.018));
+    }
+
+    .metric::before {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--stat-color, #28d7ff) 20%, rgba(255, 255, 255, 0.06));
+      box-shadow: inset 0 0 22px color-mix(in srgb, var(--stat-color, #28d7ff) 18%, transparent);
+    }
+
+    .metric:nth-child(1) { --stat-color: #28d7ff; }
+    .metric:nth-child(2) { --stat-color: #24e5d1; }
+    .metric:nth-child(3) { --stat-color: #b755ff; }
+    .metric:nth-child(4) { --stat-color: #bc4dff; }
+
+    .metric strong {
+      font-size: 1.9rem;
+    }
+
+    .metric span {
+      color: #e8edf6;
+      font-size: 0.9rem;
+    }
+
+    .toolbar {
+      grid-template-columns: minmax(240px, 420px);
+      margin-bottom: 16px;
+    }
+
+    .toolbar .filters {
+      display: none;
+    }
+
+    input[type="search"] {
+      background: rgba(13, 20, 35, 0.72);
+      border-color: rgba(148, 163, 184, 0.22);
+    }
+
+    .dashboard {
+      display: block;
+    }
+
+    .mapPanel {
+      border: 0;
+      background: transparent;
+      box-shadow: none;
+      overflow: visible;
+      backdrop-filter: none;
+    }
+
+    .mapHead,
+    .canvasShell,
+    .legend,
+    .roleList {
+      display: none;
+    }
+
+    .roadmapGrid {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    .domainPanel {
+      position: relative;
+      min-width: 0;
+      border: 1.5px solid var(--domain-color);
+      border-radius: 13px;
+      background:
+        radial-gradient(circle at 20% 0%, color-mix(in srgb, var(--domain-color) 22%, transparent), transparent 18rem),
+        linear-gradient(145deg, color-mix(in srgb, var(--domain-color) 13%, rgba(12, 18, 33, 0.92)), rgba(12, 18, 33, 0.72));
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--domain-color) 18%, transparent), 0 0 30px color-mix(in srgb, var(--domain-color) 22%, transparent), var(--shadow);
+      padding: 14px;
+      overflow: hidden;
+    }
+
+    .domainPanel::before,
+    .domainPanel::after {
+      content: "";
+      position: absolute;
+      pointer-events: none;
+      background: var(--domain-color);
+      opacity: 0.75;
+    }
+
+    .domainPanel::before {
+      left: 33%;
+      right: 33%;
+      top: 50%;
+      height: 2px;
+      box-shadow: 0 0 16px var(--domain-color);
+    }
+
+    .domainPanel::after {
+      top: 28%;
+      bottom: 24%;
+      left: 50%;
+      width: 2px;
+      box-shadow: 0 0 16px var(--domain-color);
+    }
+
+    .domainPanel h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 12px;
+      font-size: 1.05rem;
+      letter-spacing: 0;
+    }
+
+    .domainCards {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .roleCard {
+      width: 100%;
+      min-width: 0;
+      min-height: 134px;
+      border: 1px solid color-mix(in srgb, var(--domain-color) 36%, rgba(255, 255, 255, 0.15));
+      border-radius: 9px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.024));
+      box-shadow: inset 0 0 24px color-mix(in srgb, var(--domain-color) 11%, transparent), 0 16px 34px rgba(0, 0, 0, 0.28);
+      color: inherit;
+      font: inherit;
+      padding: 10px;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+      backdrop-filter: blur(16px);
+    }
+
+    .roleCard:hover,
+    .roleCard.active {
+      transform: translateY(-2px);
+      border-color: var(--domain-color);
+      box-shadow: inset 0 0 28px color-mix(in srgb, var(--domain-color) 18%, transparent), 0 0 26px color-mix(in srgb, var(--domain-color) 26%, transparent), 0 18px 38px rgba(0, 0, 0, 0.34);
+    }
+
+    .roleCardTop {
+      display: grid;
+      grid-template-columns: 36px 1fr 16px;
+      gap: 9px;
+      align-items: start;
+      margin-bottom: 9px;
+    }
+
+    .roleIcon {
+      width: 34px;
+      height: 34px;
+      --icon-color: var(--domain-color);
+    }
+
+    .roleTitle {
+      margin: 0;
+      color: #fff;
+      font-size: 0.88rem;
+      line-height: 1.14;
+      font-weight: 900;
+    }
+
+    .kebab {
+      color: rgba(237, 244, 255, 0.52);
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .levelPill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #e8edf6;
+      padding: 3px 7px;
+      font-size: 0.68rem;
+      font-weight: 800;
+    }
+
+    .levelPill::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--level-color, #4ee391);
+      box-shadow: 0 0 10px var(--level-color, #4ee391);
+    }
+
+    .certLabel {
+      margin: 0 0 6px;
+      color: #edf4ff;
+      font-size: 0.7rem;
+    }
+
+    .roadCerts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+
+    .roadCert {
+      max-width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.075);
+      color: #eef4ff;
+      padding: 3px 6px;
+      font-size: 0.62rem;
+      line-height: 1.15;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .detailPanel {
+      position: fixed;
+      right: 18px;
+      top: 18px;
+      bottom: 18px;
+      z-index: 20;
+      width: min(440px, calc(100vw - 36px));
+      transform: translateX(calc(100% + 24px));
+      transition: transform 220ms ease;
+    }
+
+    .detailPanel.open {
+      transform: translateX(0);
+    }
+
+    .detailPanel::before {
+      content: "Selected role";
+      position: absolute;
+      right: 14px;
+      top: 10px;
+      color: rgba(237, 244, 255, 0.46);
+      font-size: 0.68rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .detailClose {
+      position: absolute;
+      right: 12px;
+      top: 34px;
+      z-index: 2;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    .detailBody {
+      max-height: none;
+    }
+
+    @media (max-width: 1120px) {
+      .roadmapShell {
+        grid-template-columns: 1fr;
+      }
+
+      .sideRail {
+        position: static;
+        min-width: 0;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+        padding: 0 0 12px;
+      }
+
+      .brandMini {
+        display: none;
+      }
+
+      .filters {
+        max-width: 100%;
+        min-width: 0;
+        display: flex;
+        overflow-x: auto;
+        padding-bottom: 4px;
+      }
+
+      .filter {
+        flex: 0 0 auto;
+        white-space: nowrap;
+      }
+
+      .roadmapGrid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 760px) {
+      .app {
+        padding: 12px;
+      }
+
+      .roadmapShell {
+        gap: 12px;
+      }
+
+      h1 {
+        font-size: 1.55rem;
+      }
+
+      h1::before {
+        width: 40px;
+        height: 40px;
+      }
+
+      .metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .metric {
+        grid-template-columns: 42px 1fr;
+        min-height: 76px;
+        padding: 12px;
+      }
+
+      .metric::before {
+        width: 40px;
+        height: 40px;
+      }
+
+      .metric strong {
+        font-size: 1.45rem;
+      }
+
+      .metric span {
+        font-size: 0.78rem;
+      }
+
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .domainCards {
+        grid-template-columns: 1fr;
+      }
+
+      .domainPanel::before,
+      .domainPanel::after {
+        display: none;
+      }
+
+      .roleCard {
+        min-height: 122px;
+      }
+    }
+
+    /* Professional UX polish */
+    :root {
+      --text: #f4f7fb;
+      --muted: #a8b3c4;
+      --line: rgba(180, 194, 214, 0.16);
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+    }
+
+    body {
+      font-family: "Segoe UI", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 80% -10%, rgba(68, 92, 143, 0.24), transparent 30rem),
+        radial-gradient(circle at 18% 0%, rgba(31, 133, 161, 0.16), transparent 28rem),
+        linear-gradient(135deg, #08111f 0%, #0b1322 52%, #080c15 100%);
+      font-size: 15px;
+      line-height: 1.45;
+      letter-spacing: 0;
+    }
+
+    .app {
+      max-width: 1480px;
+      padding: 22px;
+    }
+
+    .roadmapShell {
+      grid-template-columns: 224px minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .sideRail {
+      border: 1px solid rgba(180, 194, 214, 0.13);
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(16, 24, 39, 0.74), rgba(12, 18, 30, 0.55));
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.2);
+      padding: 18px;
+      backdrop-filter: blur(18px);
+    }
+
+    .brandMini {
+      margin-bottom: 28px;
+      padding: 0;
+    }
+
+    .brandIcon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      color: #7dd3fc;
+      background: rgba(56, 189, 248, 0.12);
+      box-shadow: none;
+    }
+
+    .brandMini strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 0.95rem;
+      letter-spacing: 0;
+    }
+
+    .sideLabel {
+      margin-bottom: 12px;
+      padding-left: 0;
+      color: #c9d3e3;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .filter {
+      border-radius: 10px;
+      color: #c6d0df;
+      padding: 10px 11px;
+      font-size: 0.84rem;
+      font-weight: 650;
+      line-height: 1.2;
+    }
+
+    .filter::before {
+      width: 11px;
+      height: 11px;
+      border-radius: 3px;
+      box-shadow: none;
+      opacity: 0.86;
+    }
+
+    .filter:hover,
+    .filter.active {
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color, #7dd3fc) 38%, transparent);
+    }
+
+    header {
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin-bottom: 14px;
+      color: #f8fafc;
+      font-size: clamp(2rem, 2.6vw, 2.65rem);
+      font-weight: 760;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+
+    h1::before {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      background:
+        linear-gradient(rgba(56, 189, 248, 0.15), rgba(56, 189, 248, 0.08)),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='none' stroke='%237dd3fc' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='14' rx='2'/%3E%3Cpath d='M8 20h8'/%3E%3Cpath d='M12 18v2'/%3E%3Cpath d='M9 11h6'/%3E%3Cpath d='M12 8v6'/%3E%3C/svg%3E") center/27px 27px no-repeat;
+      box-shadow: none;
+    }
+
+    .metrics {
+      gap: 14px;
+    }
+
+    .metric {
+      min-height: 90px;
+      border-color: rgba(180, 194, 214, 0.15);
+      border-radius: 14px;
+      background: linear-gradient(145deg, rgba(19, 28, 45, 0.86), rgba(15, 22, 36, 0.64));
+      box-shadow: 0 14px 38px rgba(0, 0, 0, 0.2);
+      padding: 16px;
+    }
+
+    .metric::before {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--stat-color, #7dd3fc) 16%, rgba(255, 255, 255, 0.04));
+      box-shadow: none;
+    }
+
+    .metric strong {
+      color: #f8fafc;
+      font-size: 1.72rem;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .metric span {
+      margin-top: 4px;
+      color: #b7c2d2;
+      font-size: 0.84rem;
+      line-height: 1.25;
+    }
+
+    .toolbar {
+      margin-bottom: 18px;
+    }
+
+    input[type="search"] {
+      height: 44px;
+      border-radius: 12px;
+      background: rgba(11, 17, 29, 0.72);
+      color: #f8fafc;
+      font-size: 0.92rem;
+    }
+
+    input[type="search"]::placeholder {
+      color: #7f8b9d;
+    }
+
+    .roadmapGrid {
+      gap: 18px;
+    }
+
+    .domainPanel {
+      border: 1px solid color-mix(in srgb, var(--domain-color) 42%, rgba(180, 194, 214, 0.14));
+      border-radius: 16px;
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--domain-color) 9%, rgba(18, 27, 43, 0.92)), rgba(12, 18, 30, 0.84));
+      box-shadow: 0 18px 42px rgba(0, 0, 0, 0.22);
+      padding: 16px;
+    }
+
+    .domainPanel::before,
+    .domainPanel::after {
+      opacity: 0.28;
+      box-shadow: none;
+    }
+
+    .domainPanel h2 {
+      margin-bottom: 14px;
+      color: #f8fafc;
+      font-size: 1.03rem;
+      font-weight: 760;
+      line-height: 1.2;
+    }
+
+    .domainCards {
+      gap: 12px;
+    }
+
+    .roleCard {
+      min-height: 128px;
+      border-color: rgba(180, 194, 214, 0.16);
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(23, 33, 51, 0.9), rgba(15, 23, 38, 0.78));
+      box-shadow: none;
+      padding: 12px;
+    }
+
+    .roleCard:hover,
+    .roleCard.active {
+      transform: translateY(-1px);
+      border-color: color-mix(in srgb, var(--domain-color) 70%, white);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.26), inset 0 0 0 1px color-mix(in srgb, var(--domain-color) 24%, transparent);
+    }
+
+    .roleCardTop {
+      grid-template-columns: 34px minmax(0, 1fr) 14px;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .roleIcon {
+      width: 32px;
+      height: 32px;
+      border-radius: 9px;
+      background: color-mix(in srgb, var(--domain-color) 15%, rgba(255, 255, 255, 0.04));
+      box-shadow: none;
+    }
+
+    .roleTitle {
+      color: #f8fafc;
+      font-size: 0.9rem;
+      font-weight: 720;
+      line-height: 1.18;
+    }
+
+    .kebab {
+      color: #7f8b9d;
+    }
+
+    .levelPill {
+      margin-bottom: 8px;
+      border-color: rgba(180, 194, 214, 0.12);
+      background: rgba(255, 255, 255, 0.06);
+      color: #dce6f3;
+      padding: 3px 8px;
+      font-size: 0.66rem;
+      font-weight: 760;
+    }
+
+    .levelPill::before {
+      box-shadow: none;
+    }
+
+    .certLabel {
+      color: #9eabbd;
+      font-size: 0.72rem;
+      font-weight: 650;
+    }
+
+    .roadCert {
+      border-color: rgba(180, 194, 214, 0.12);
+      background: rgba(255, 255, 255, 0.07);
+      color: #dbe5f2;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 4px 7px;
+    }
+
+    .detailPanel {
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(17, 25, 40, 0.96), rgba(10, 15, 26, 0.94));
+    }
+
+    .detailTop {
+      padding: 22px 54px 18px 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.015));
+    }
+
+    .detailTop h2 {
+      font-size: 1.55rem;
+      font-weight: 760;
+      line-height: 1.15;
+    }
+
+    .description {
+      color: #aeb9c8;
+      font-size: 0.92rem;
+    }
+
+    .viewTab {
+      border-radius: 10px;
+      font-size: 0.75rem;
+      font-weight: 760;
+    }
+
+    @media (max-width: 760px) {
+      .app {
+        padding: 12px;
+      }
+
+      .roadmapShell {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .sideRail {
+        position: static;
+        height: auto;
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      h1 {
+        font-size: 1.52rem;
+        gap: 10px;
+      }
+
+      h1::before {
+        width: 38px;
+        height: 38px;
+        border-radius: 11px;
+      }
+
+      .metric {
+        min-height: 78px;
+        border-radius: 12px;
+      }
+
+      .domainPanel {
+        border-radius: 14px;
+        padding: 14px;
+      }
+
+      .roleTitle {
+        font-size: 0.88rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <div class="roadmapShell">
+      <aside class="sideRail" aria-label="Roadmap categories">
+        <div class="brandMini">
+          <div class="brandIcon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M8 20h8M12 18v2M9 11h6M12 8v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <strong>Roadmap</strong>
+        </div>
+        <p class="sideLabel">Category</p>
+        <div id="filters" class="filters"></div>
+      </aside>
+
+      <div class="roadmapMain">
+        <header>
+          <div>
+            <p class="eyebrow">Interactive IT Career Dashboard</p>
+            <h1>IT Career Roles & Certification Roadmap</h1>
+            <p class="summary">Explore roles across data, software, cloud, security, DevOps, support, networking, and product tracks. Search or filter the map, then select any node to inspect skills, tools, recommended certifications, and a practical learning path.</p>
+          </div>
+          <div class="metrics" aria-label="Dashboard metrics">
+            <div class="metric"><strong id="metricCategories">7</strong><span>Career Domains</span></div>
+            <div class="metric"><strong id="metricRoles">42</strong><span>Roles</span></div>
+            <div class="metric"><strong id="metricCerts">0</strong><span>Certifications</span></div>
+            <div class="metric"><strong>Beginner</strong><span>to Advanced</span></div>
+          </div>
+        </header>
+
+        <section class="toolbar" aria-label="Search and filters">
+          <label class="searchWrap">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="m21 21-4.35-4.35m1.35-5.15a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+            <input id="search" type="search" autocomplete="off" placeholder="Search roles, tools, skills, certifications..." />
+          </label>
+        </section>
+
+        <main class="dashboard">
+          <section class="mapPanel" aria-label="Role roadmap board">
+        <div class="mapHead">
+          <h2>Role Map</h2>
+          <span id="mapHint" class="mapHint">Drag to pan, wheel to zoom, hover nodes for focus</span>
+        </div>
+        <div class="canvasShell">
+          <canvas id="roleCanvas" aria-label="Interactive role map"></canvas>
+          <div id="emptyState" class="emptyState">No roles match the current search and filters.</div>
+        </div>
+        <div id="legend" class="legend" aria-label="Role category legend"></div>
+        <div id="roadmap" class="roadmapGrid" aria-label="Role roadmap cards"></div>
+        <div id="roleList" class="roleList" aria-label="Visible roles"></div>
+          </section>
+
+          <aside id="detail" class="detailPanel" aria-live="polite"></aside>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const categories = [
+      { name: "Data & Analytics", color: "#66e3ff" },
+      { name: "Software Development", color: "#6ee7a8" },
+      { name: "Cloud & Infrastructure", color: "#7db4ff" },
+      { name: "Cybersecurity", color: "#ff7ab6" },
+      { name: "DevOps", color: "#ffd166" },
+      { name: "AI & Automation", color: "#22d3ee" },
+      { name: "IT Support & Networking", color: "#b79cff" },
+      { name: "Product & Project Management", color: "#f7a66a" }
+    ];
+
+    const roles = [
+      {
+        title: "Data Analyst",
+        category: "Data & Analytics",
+        description: "Turns operational and business data into trusted insights, dashboards, and recommendations for decision makers.",
+        responsibilities: ["Gather reporting requirements", "Clean and model datasets", "Build dashboards and recurring reports", "Explain trends, gaps, and risks to stakeholders"],
+        beginner: ["Spreadsheet analysis", "SQL basics", "Data cleaning", "Descriptive statistics"],
+        intermediate: ["Power BI data modeling", "DAX measures", "Dashboard design", "Stakeholder storytelling"],
+        advanced: ["Metric frameworks", "Experiment analysis", "Performance optimization", "Self-service BI governance"],
+        tools: ["Power BI", "Excel", "SQL Server", "Power Query", "Tableau"],
+        certifications: ["PL-300", "DP-900"],
+        learningPath: ["Master spreadsheet formulas and pivot tables", "Write SQL joins and aggregations", "Build Power BI reports with DAX", "Create a portfolio using public datasets"],
+        related: ["BI Analyst", "Data Engineer", "Product Owner"]
+      },
+      {
+        title: "Data Engineer",
+        category: "Data & Analytics",
+        description: "Builds reliable data pipelines, warehouses, and lakehouse systems that make data usable at scale.",
+        responsibilities: ["Design batch and streaming pipelines", "Build data models for analytics", "Monitor pipeline quality", "Manage orchestration and data platform costs"],
+        beginner: ["SQL", "Python basics", "Data formats", "Relational modeling"],
+        intermediate: ["ETL and ELT patterns", "Spark concepts", "Data warehousing", "Pipeline orchestration"],
+        advanced: ["Lakehouse architecture", "Streaming systems", "Data observability", "Performance tuning"],
+        tools: ["Azure Data Factory", "Databricks", "Spark", "dbt", "Airflow"],
+        certifications: ["DP-203", "Databricks Certified Data Engineer Associate", "Google Professional Data Engineer"],
+        learningPath: ["Write production-grade SQL and Python", "Build an ETL pipeline from raw files to warehouse tables", "Add orchestration, testing, and monitoring", "Deploy a lakehouse project with documented data contracts"],
+        related: ["Data Analyst", "Data Scientist", "Cloud Engineer"]
+      },
+      {
+        title: "BI Analyst",
+        category: "Data & Analytics",
+        description: "Specializes in business intelligence models, semantic layers, and executive-ready reporting experiences.",
+        responsibilities: ["Define business KPIs", "Create semantic models", "Automate reporting workflows", "Coach teams on BI adoption"],
+        beginner: ["KPI definitions", "SQL filters", "Visualization basics", "Data validation"],
+        intermediate: ["DAX", "Star schemas", "Report navigation", "Row-level security"],
+        advanced: ["Enterprise semantic models", "BI governance", "Capacity planning", "Advanced Power Query"],
+        tools: ["Power BI", "SQL Server", "Excel", "Fabric", "Tableau"],
+        certifications: ["PL-300", "DP-900"],
+        learningPath: ["Practice business question framing", "Model clean fact and dimension tables", "Publish interactive dashboards", "Document metrics and access rules"],
+        related: ["Data Analyst", "Data Engineer", "Product Owner"]
+      },
+      {
+        title: "Data Scientist",
+        category: "Data & Analytics",
+        description: "Uses statistics, machine learning, and experimentation to explain outcomes and predict future behavior.",
+        responsibilities: ["Frame analytical hypotheses", "Train and validate models", "Communicate uncertainty", "Partner with engineering on deployment"],
+        beginner: ["Python", "Statistics", "Data visualization", "Exploratory data analysis"],
+        intermediate: ["Machine learning algorithms", "Feature engineering", "Model evaluation", "Experiment design"],
+        advanced: ["Causal inference", "MLOps collaboration", "Model interpretability", "Production monitoring"],
+        tools: ["Python", "Jupyter", "scikit-learn", "Databricks", "MLflow"],
+        certifications: ["AI-900", "DP-900", "Google Professional Data Engineer"],
+        learningPath: ["Build Python analysis notebooks", "Study probability and regression", "Train models on real datasets", "Package a model with evaluation and monitoring notes"],
+        related: ["Machine Learning Engineer", "Data Engineer", "Data Analyst"]
+      },
+      {
+        title: "Machine Learning Engineer",
+        category: "Data & Analytics",
+        description: "Turns machine learning prototypes into reliable services, pipelines, and monitored production systems.",
+        responsibilities: ["Deploy model services", "Automate training workflows", "Manage feature pipelines", "Monitor drift, latency, and quality"],
+        beginner: ["Python", "APIs", "Git", "ML fundamentals"],
+        intermediate: ["Model serving", "Feature stores", "CI/CD for ML", "Containerization"],
+        advanced: ["Distributed training", "Responsible AI controls", "Online inference scaling", "Advanced observability"],
+        tools: ["Python", "Docker", "Kubernetes", "MLflow", "Azure Machine Learning"],
+        certifications: ["AI-900", "DP-203", "AWS Solutions Architect Associate"],
+        learningPath: ["Learn model training and evaluation", "Expose a model through an API", "Containerize and deploy the service", "Add automated retraining and monitoring"],
+        related: ["Data Scientist", "Backend Developer", "DevOps Engineer"]
+      },
+      {
+        title: "Frontend Developer",
+        category: "Software Development",
+        description: "Builds user interfaces that are accessible, responsive, performant, and connected to product goals.",
+        responsibilities: ["Implement responsive UI", "Integrate APIs", "Improve accessibility", "Optimize client performance"],
+        beginner: ["HTML", "CSS", "JavaScript", "Browser DevTools"],
+        intermediate: ["Component architecture", "State management", "Accessibility testing", "API integration"],
+        advanced: ["Performance profiling", "Design systems", "Advanced testing", "Frontend security"],
+        tools: ["VS Code", "Git", "React", "Figma", "Playwright"],
+        certifications: ["AWS Certified Cloud Practitioner", "Scrum Master certification"],
+        learningPath: ["Build static responsive pages", "Create interactive JavaScript apps", "Learn a component framework", "Ship tested UI connected to real APIs"],
+        related: ["Full Stack Developer", "Backend Developer", "Product Owner"]
+      },
+      {
+        title: "Backend Developer",
+        category: "Software Development",
+        description: "Designs APIs, services, databases, and business logic that power secure and scalable applications.",
+        responsibilities: ["Build service APIs", "Design databases", "Implement authentication", "Maintain reliability and observability"],
+        beginner: ["Programming fundamentals", "HTTP", "SQL", "Git"],
+        intermediate: ["REST APIs", "Authentication", "Testing", "Database indexing"],
+        advanced: ["Distributed systems", "Event-driven architecture", "Security hardening", "Scalability patterns"],
+        tools: ["Node.js", "Python", "PostgreSQL", "Docker", "Postman"],
+        certifications: ["AWS Certified Cloud Practitioner", "AWS Solutions Architect Associate"],
+        learningPath: ["Build command-line and web basics", "Create CRUD APIs with a database", "Add authentication and tests", "Deploy services with monitoring"],
+        related: ["Full Stack Developer", "Frontend Developer", "DevOps Engineer"]
+      },
+      {
+        title: "Full Stack Developer",
+        category: "Software Development",
+        description: "Works across frontend, backend, and deployment concerns to deliver complete application features.",
+        responsibilities: ["Build end-to-end features", "Connect UI to APIs", "Manage data persistence", "Debug across the stack"],
+        beginner: ["HTML and CSS", "JavaScript", "HTTP", "Database basics"],
+        intermediate: ["Frontend frameworks", "API development", "Authentication", "Deployment workflows"],
+        advanced: ["System design", "Performance tuning", "Security review", "Cloud-native patterns"],
+        tools: ["React", "Node.js", "SQL", "Docker", "GitHub Actions"],
+        certifications: ["AWS Certified Cloud Practitioner", "AZ-900", "Scrum Master certification"],
+        learningPath: ["Build frontend fundamentals", "Add a backend API", "Connect authentication and database storage", "Deploy a polished full-stack portfolio app"],
+        related: ["Frontend Developer", "Backend Developer", "Cloud Engineer"]
+      },
+      {
+        title: "Cloud Engineer",
+        category: "Cloud & Infrastructure",
+        description: "Builds and operates cloud environments with secure networking, compute, storage, identity, and automation.",
+        responsibilities: ["Provision cloud resources", "Configure networking and identity", "Automate deployments", "Track reliability and spend"],
+        beginner: ["Cloud fundamentals", "Networking basics", "Linux basics", "Identity concepts"],
+        intermediate: ["Infrastructure as code", "Virtual networks", "Monitoring", "Backup and recovery"],
+        advanced: ["Landing zones", "Hybrid connectivity", "Cost optimization", "High availability architecture"],
+        tools: ["Azure", "AWS", "Terraform", "Bicep", "Azure Monitor"],
+        certifications: ["AZ-900", "AZ-104", "AWS Certified Cloud Practitioner", "AWS Solutions Architect Associate"],
+        learningPath: ["Learn cloud service models and core networking", "Deploy virtual machines and storage", "Automate infrastructure with code", "Design a resilient cloud environment"],
+        related: ["Azure Engineer", "DevOps Engineer", "IT Support Specialist"]
+      },
+      {
+        title: "Azure Engineer",
+        category: "Cloud & Infrastructure",
+        description: "Focuses on Microsoft Azure implementation, administration, identity, networking, and governance.",
+        responsibilities: ["Administer Azure subscriptions", "Manage Entra ID access", "Configure virtual networks", "Implement monitoring and policy"],
+        beginner: ["Azure portal", "Resource groups", "RBAC", "Core networking"],
+        intermediate: ["Azure VMs", "Storage accounts", "Azure Monitor", "Backup and recovery"],
+        advanced: ["Azure landing zones", "Policy as code", "Hub-spoke networking", "Architecture reviews"],
+        tools: ["Azure Portal", "Azure CLI", "Bicep", "Log Analytics", "Microsoft Defender for Cloud"],
+        certifications: ["AZ-900", "AZ-104", "AZ-305", "SC-900"],
+        learningPath: ["Study Azure fundamentals", "Administer identities, compute, and storage", "Automate deployments with CLI or Bicep", "Design secure multi-subscription architecture"],
+        related: ["Cloud Engineer", "DevOps Engineer", "Cybersecurity Analyst"]
+      },
+      {
+        title: "DevOps Engineer",
+        category: "DevOps",
+        description: "Improves software delivery through automation, CI/CD, observability, infrastructure as code, and reliability practices.",
+        responsibilities: ["Build CI/CD pipelines", "Automate infrastructure", "Improve release reliability", "Support incident response and monitoring"],
+        beginner: ["Git", "Linux shell", "Scripting", "Build basics"],
+        intermediate: ["CI/CD pipelines", "Docker", "Infrastructure as code", "Cloud monitoring"],
+        advanced: ["Kubernetes", "Progressive delivery", "SRE practices", "Platform engineering"],
+        tools: ["GitHub Actions", "Azure DevOps", "Docker", "Kubernetes", "Terraform"],
+        certifications: ["AZ-104", "AWS Solutions Architect Associate", "Scrum Master certification"],
+        learningPath: ["Automate builds and tests", "Containerize an application", "Provision infrastructure with code", "Create monitored deployment pipelines"],
+        related: ["Cloud Engineer", "Backend Developer", "Machine Learning Engineer"]
+      },
+      {
+        title: "Cybersecurity Analyst",
+        category: "Cybersecurity",
+        description: "Protects systems by assessing risks, monitoring threats, improving controls, and responding to security events.",
+        responsibilities: ["Monitor security alerts", "Assess vulnerabilities", "Document risk findings", "Coordinate remediation"],
+        beginner: ["Security fundamentals", "Networking basics", "Operating systems", "Risk concepts"],
+        intermediate: ["SIEM analysis", "Vulnerability management", "Incident handling", "Identity security"],
+        advanced: ["Threat hunting", "Detection engineering", "Cloud security posture", "Security architecture"],
+        tools: ["Microsoft Sentinel", "Defender XDR", "Nmap", "Wireshark", "ServiceNow"],
+        certifications: ["SC-900", "SC-200", "CompTIA Security+"],
+        learningPath: ["Learn networking and security foundations", "Practice log analysis and alert triage", "Run vulnerability and incident response labs", "Build detections and response playbooks"],
+        related: ["SOC Analyst", "Azure Engineer", "Cloud Engineer"]
+      },
+      {
+        title: "SOC Analyst",
+        category: "Cybersecurity",
+        description: "Triages alerts, investigates suspicious activity, and escalates verified incidents in a security operations center.",
+        responsibilities: ["Review SIEM alerts", "Enrich indicators", "Escalate incidents", "Tune noisy detections"],
+        beginner: ["Log reading", "Networking", "Endpoint basics", "Security terminology"],
+        intermediate: ["KQL queries", "Incident triage", "Malware indicators", "Case management"],
+        advanced: ["Threat hunting", "Detection tuning", "Forensic timelines", "Automation playbooks"],
+        tools: ["Microsoft Sentinel", "Defender for Endpoint", "VirusTotal", "Wireshark", "Splunk"],
+        certifications: ["SC-900", "SC-200", "CompTIA Security+"],
+        learningPath: ["Study common attack patterns", "Practice SIEM searches", "Investigate lab alerts from endpoint and identity logs", "Create detection notes and escalation runbooks"],
+        related: ["Cybersecurity Analyst", "IT Support Specialist", "Azure Engineer"]
+      },
+      {
+        title: "IT Support Specialist",
+        category: "IT Support & Networking",
+        description: "Helps users and teams resolve hardware, software, network, identity, and productivity issues quickly and reliably.",
+        responsibilities: ["Triage service desk tickets", "Support devices and applications", "Manage accounts and access", "Document fixes and knowledge base articles"],
+        beginner: ["Windows basics", "Customer support", "Troubleshooting method", "Microsoft 365 basics"],
+        intermediate: ["Networking fundamentals", "Endpoint management", "Active Directory", "Ticket prioritization"],
+        advanced: ["Automation scripts", "Device lifecycle management", "ITIL practices", "Escalation leadership"],
+        tools: ["Microsoft 365 Admin Center", "Intune", "Active Directory", "ServiceNow", "Remote support tools"],
+        certifications: ["CompTIA A+", "CompTIA Network+", "Cisco CCNA", "AZ-900"],
+        learningPath: ["Build troubleshooting habits", "Learn Windows, Microsoft 365, and networking basics", "Practice account and device administration", "Automate common fixes and document repeatable processes"],
+        related: ["SOC Analyst", "Cloud Engineer", "Azure Engineer"]
+      },
+      {
+        title: "Product Owner",
+        category: "Product & Project Management",
+        description: "Owns product outcomes by prioritizing work, shaping requirements, and connecting user needs to delivery teams.",
+        responsibilities: ["Maintain product backlog", "Clarify acceptance criteria", "Prioritize stakeholder needs", "Review delivery outcomes"],
+        beginner: ["Agile basics", "User stories", "Stakeholder communication", "Backlog hygiene"],
+        intermediate: ["Roadmapping", "Prioritization frameworks", "Metrics definition", "Facilitation"],
+        advanced: ["Product strategy", "Discovery research", "Outcome-based planning", "Portfolio alignment"],
+        tools: ["Azure Boards", "Jira", "Miro", "Figma", "Power BI"],
+        certifications: ["Scrum Master certification", "PL-300"],
+        learningPath: ["Learn agile roles and ceremonies", "Write clear user stories and acceptance criteria", "Prioritize using value and risk", "Measure product outcomes with dashboards"],
+        related: ["Data Analyst", "BI Analyst", "Full Stack Developer"]
+      },
+      {
+        title: "Analytics Engineer",
+        category: "Data & Analytics",
+        description: "Bridges data engineering and analytics by building tested, documented transformation models for reliable business reporting.",
+        responsibilities: ["Transform raw data into analytics-ready models", "Define metrics and semantic layers", "Write data tests and documentation", "Partner with analysts on trusted datasets"],
+        beginner: ["SQL joins", "Data modeling basics", "Git workflow", "BI concepts"],
+        intermediate: ["dbt modeling", "Dimensional modeling", "Data quality tests", "Metric layer design"],
+        advanced: ["Semantic governance", "CI/CD for analytics", "Warehouse performance tuning", "Data contract design"],
+        tools: ["dbt", "Snowflake", "BigQuery", "Power BI", "GitHub Actions"],
+        certifications: ["DP-900", "PL-300", "Google Professional Data Engineer"],
+        learningPath: ["Practice SQL transformations", "Model facts and dimensions in dbt", "Add tests, documentation, and lineage", "Publish a governed dataset into BI"],
+        related: ["Data Analyst", "Data Engineer", "BI Analyst"]
+      },
+      {
+        title: "Database Administrator",
+        category: "Data & Analytics",
+        description: "Keeps database platforms secure, performant, backed up, and available for applications and analytics teams.",
+        responsibilities: ["Manage database backups", "Tune queries and indexes", "Control database access", "Plan upgrades and maintenance windows"],
+        beginner: ["SQL fundamentals", "Relational databases", "Backup concepts", "Access control basics"],
+        intermediate: ["Index tuning", "Replication", "Monitoring", "Stored procedures"],
+        advanced: ["High availability design", "Disaster recovery testing", "Capacity planning", "Database security hardening"],
+        tools: ["SQL Server", "PostgreSQL", "MySQL", "Azure SQL", "SQL Server Management Studio"],
+        certifications: ["DP-900", "AZ-900", "DP-203"],
+        learningPath: ["Administer a local database", "Practice backups, restores, and user permissions", "Tune slow queries with execution plans", "Design a resilient database operations runbook"],
+        related: ["Data Engineer", "Backend Developer", "Systems Administrator"]
+      },
+      {
+        title: "Data Architect",
+        category: "Data & Analytics",
+        description: "Designs enterprise data platforms, models, governance patterns, and integration strategies across business domains.",
+        responsibilities: ["Define data architecture standards", "Design warehouse and lakehouse patterns", "Guide data governance", "Review platform integration choices"],
+        beginner: ["Data lifecycle", "SQL modeling", "Cloud data services", "Governance basics"],
+        intermediate: ["Enterprise data modeling", "Master data concepts", "Metadata management", "Security and privacy controls"],
+        advanced: ["Reference architectures", "Cross-domain data strategy", "Data mesh patterns", "Regulatory alignment"],
+        tools: ["Azure Synapse", "Databricks", "Microsoft Purview", "ER/Studio", "Power BI"],
+        certifications: ["DP-203", "AZ-305", "Google Professional Data Engineer"],
+        learningPath: ["Study data platform patterns", "Model operational and analytical domains", "Design governance and access patterns", "Create a reference architecture with tradeoffs"],
+        related: ["Data Engineer", "Solutions Architect", "Analytics Engineer"]
+      },
+      {
+        title: "Business Analyst",
+        category: "Product & Project Management",
+        description: "Clarifies business needs, processes, and requirements so teams can deliver valuable technology changes.",
+        responsibilities: ["Elicit requirements", "Map current and future processes", "Write acceptance criteria", "Validate delivered outcomes with stakeholders"],
+        beginner: ["Process mapping", "Interviewing", "User stories", "Basic data analysis"],
+        intermediate: ["Requirements workshops", "Backlog refinement", "UAT planning", "KPI definition"],
+        advanced: ["Operating model analysis", "Change impact assessment", "Benefits realization", "Complex stakeholder alignment"],
+        tools: ["Jira", "Azure Boards", "Visio", "Miro", "Excel"],
+        certifications: ["Scrum Master certification", "PL-300"],
+        learningPath: ["Practice requirements interviews", "Document process flows and pain points", "Translate needs into testable stories", "Measure outcomes after delivery"],
+        related: ["Product Owner", "Project Manager", "Data Analyst"]
+      },
+      {
+        title: "QA Automation Engineer",
+        category: "Software Development",
+        description: "Builds automated test suites and quality practices that catch regressions before software reaches users.",
+        responsibilities: ["Create automated UI and API tests", "Maintain test data", "Integrate tests into CI/CD", "Analyze defects and coverage gaps"],
+        beginner: ["Testing fundamentals", "JavaScript or Python", "Git", "Bug reporting"],
+        intermediate: ["API testing", "Playwright or Selenium", "Test design patterns", "CI test execution"],
+        advanced: ["Performance test strategy", "Contract testing", "Flaky test reduction", "Quality metrics"],
+        tools: ["Playwright", "Selenium", "Postman", "Jest", "GitHub Actions"],
+        certifications: ["Scrum Master certification", "AWS Certified Cloud Practitioner"],
+        learningPath: ["Learn manual test design", "Automate browser and API checks", "Run tests in a pipeline", "Build reporting and defect triage habits"],
+        related: ["Frontend Developer", "Backend Developer", "DevOps Engineer"]
+      },
+      {
+        title: "Mobile App Developer",
+        category: "Software Development",
+        description: "Creates mobile applications that work reliably across devices, operating systems, and network conditions.",
+        responsibilities: ["Build mobile UI and navigation", "Integrate device APIs", "Manage app state and offline behavior", "Prepare app store releases"],
+        beginner: ["JavaScript or Swift/Kotlin basics", "Mobile UI patterns", "REST APIs", "Git"],
+        intermediate: ["React Native or Flutter", "Local storage", "Push notifications", "Mobile testing"],
+        advanced: ["Performance profiling", "Native module integration", "Secure storage", "Release automation"],
+        tools: ["React Native", "Flutter", "Xcode", "Android Studio", "Firebase"],
+        certifications: ["AWS Certified Cloud Practitioner", "Scrum Master certification"],
+        learningPath: ["Build simple responsive screens", "Connect to APIs and local storage", "Add authentication and notifications", "Release a tested app build"],
+        related: ["Frontend Developer", "Full Stack Developer", "QA Automation Engineer"]
+      },
+      {
+        title: "Application Security Engineer",
+        category: "Cybersecurity",
+        description: "Improves software security through secure design reviews, code analysis, threat modeling, and developer enablement.",
+        responsibilities: ["Review application architecture", "Run SAST and DAST scans", "Guide remediation", "Build secure coding standards"],
+        beginner: ["OWASP Top 10", "HTTP basics", "Authentication concepts", "Secure coding basics"],
+        intermediate: ["Threat modeling", "Code review", "Dependency scanning", "API security"],
+        advanced: ["Secure SDLC strategy", "Exploit validation", "DevSecOps automation", "Security architecture patterns"],
+        tools: ["Burp Suite", "OWASP ZAP", "Snyk", "GitHub Advanced Security", "Postman"],
+        certifications: ["CompTIA Security+", "SC-900", "SC-200"],
+        learningPath: ["Study common web vulnerabilities", "Practice testing vulnerable apps", "Add security checks to CI/CD", "Lead a threat model for a real feature"],
+        related: ["Cybersecurity Analyst", "Backend Developer", "QA Automation Engineer"]
+      },
+      {
+        title: "Security Engineer",
+        category: "Cybersecurity",
+        description: "Designs and operates security controls across endpoints, identities, networks, cloud platforms, and applications.",
+        responsibilities: ["Implement security tooling", "Harden systems and services", "Automate control checks", "Support incident response improvements"],
+        beginner: ["Networking", "Operating systems", "Security fundamentals", "Scripting basics"],
+        intermediate: ["Endpoint protection", "Identity controls", "Firewall policies", "SIEM integration"],
+        advanced: ["Zero trust design", "Detection engineering", "Cloud security architecture", "Security automation"],
+        tools: ["Microsoft Defender XDR", "Sentinel", "Terraform", "PowerShell", "Nessus"],
+        certifications: ["CompTIA Security+", "SC-200", "AZ-104"],
+        learningPath: ["Learn systems and network security", "Deploy and monitor common controls", "Automate configuration checks", "Design layered security for a cloud workload"],
+        related: ["Cybersecurity Analyst", "Cloud Security Engineer", "SOC Analyst"]
+      },
+      {
+        title: "Cloud Security Engineer",
+        category: "Cybersecurity",
+        description: "Secures cloud workloads with identity controls, posture management, network segmentation, and policy automation.",
+        responsibilities: ["Review cloud configurations", "Implement security policies", "Harden identities and workloads", "Automate compliance checks"],
+        beginner: ["Cloud fundamentals", "IAM basics", "Networking", "Security baselines"],
+        intermediate: ["CSPM findings", "Key management", "Private networking", "Container security"],
+        advanced: ["Zero trust cloud architecture", "Policy as code", "Threat detection in cloud logs", "Multi-cloud governance"],
+        tools: ["Microsoft Defender for Cloud", "AWS Security Hub", "Azure Policy", "Terraform", "Sentinel"],
+        certifications: ["SC-900", "SC-200", "AZ-104", "AWS Solutions Architect Associate"],
+        learningPath: ["Understand shared responsibility", "Harden identities, networks, and storage", "Automate policy checks", "Build cloud detection and response playbooks"],
+        related: ["Security Engineer", "Cloud Engineer", "Azure Engineer"]
+      },
+      {
+        title: "Penetration Tester",
+        category: "Cybersecurity",
+        description: "Ethically tests systems and applications to identify exploitable weaknesses and communicate remediation steps.",
+        responsibilities: ["Scope authorized tests", "Perform reconnaissance", "Validate vulnerabilities", "Write actionable reports"],
+        beginner: ["Networking", "Linux", "Web security basics", "Scripting"],
+        intermediate: ["Exploitation techniques", "Privilege escalation", "Web app testing", "Report writing"],
+        advanced: ["Active Directory attacks", "Cloud penetration testing", "Red team operations", "Exploit development basics"],
+        tools: ["Kali Linux", "Burp Suite", "Nmap", "Metasploit", "BloodHound"],
+        certifications: ["CompTIA Security+", "Cisco CCNA"],
+        learningPath: ["Build networking and Linux foundations", "Practice legal lab challenges", "Write clear vulnerability reports", "Learn enterprise attack paths and defenses"],
+        related: ["Security Engineer", "Cybersecurity Analyst", "SOC Analyst"]
+      },
+      {
+        title: "GRC Analyst",
+        category: "Cybersecurity",
+        description: "Manages governance, risk, and compliance activities that connect security controls to business and regulatory obligations.",
+        responsibilities: ["Maintain risk registers", "Map controls to frameworks", "Coordinate audits", "Track remediation plans"],
+        beginner: ["Risk concepts", "Policy writing", "Security fundamentals", "Evidence collection"],
+        intermediate: ["Control testing", "Vendor risk", "Audit coordination", "Framework mapping"],
+        advanced: ["Enterprise risk reporting", "Regulatory readiness", "Control automation", "Security program metrics"],
+        tools: ["ServiceNow GRC", "Excel", "Power BI", "Microsoft Purview", "SharePoint"],
+        certifications: ["SC-900", "CompTIA Security+", "Scrum Master certification"],
+        learningPath: ["Learn common security frameworks", "Practice writing policies and controls", "Collect and assess audit evidence", "Build a risk dashboard for leadership"],
+        related: ["Cybersecurity Analyst", "Product Owner", "IT Manager"]
+      },
+      {
+        title: "Site Reliability Engineer",
+        category: "DevOps",
+        description: "Applies software engineering to operations, improving reliability, observability, incident response, and service performance.",
+        responsibilities: ["Define service level objectives", "Automate operational tasks", "Improve observability", "Lead incident reviews"],
+        beginner: ["Linux", "Scripting", "Monitoring basics", "Git"],
+        intermediate: ["SLOs and SLIs", "Incident management", "Infrastructure as code", "Container operations"],
+        advanced: ["Reliability engineering", "Capacity modeling", "Chaos testing", "Error budget governance"],
+        tools: ["Prometheus", "Grafana", "Kubernetes", "Terraform", "PagerDuty"],
+        certifications: ["AZ-104", "AWS Solutions Architect Associate"],
+        learningPath: ["Monitor a simple service", "Automate deployment and rollback", "Define SLOs and alerts", "Run incident reviews and reliability improvements"],
+        related: ["DevOps Engineer", "Platform Engineer", "Backend Developer"]
+      },
+      {
+        title: "Platform Engineer",
+        category: "DevOps",
+        description: "Builds internal developer platforms that make delivery, infrastructure, security, and observability easier for engineering teams.",
+        responsibilities: ["Create golden paths for teams", "Maintain CI/CD templates", "Build self-service infrastructure", "Improve developer experience"],
+        beginner: ["Git", "Linux", "Cloud basics", "Scripting"],
+        intermediate: ["Kubernetes", "Infrastructure as code", "CI/CD design", "Secrets management"],
+        advanced: ["Internal developer portals", "Multi-tenant platforms", "Policy automation", "Platform product management"],
+        tools: ["Backstage", "Kubernetes", "Terraform", "GitHub Actions", "Vault"],
+        certifications: ["AZ-104", "AWS Solutions Architect Associate", "Scrum Master certification"],
+        learningPath: ["Learn delivery workflows", "Create reusable pipeline and IaC modules", "Publish self-service templates", "Measure developer experience and reliability"],
+        related: ["DevOps Engineer", "Site Reliability Engineer", "Cloud Engineer"]
+      },
+      {
+        title: "Release Manager",
+        category: "DevOps",
+        description: "Coordinates software releases across teams, environments, approvals, rollback plans, and stakeholder communications.",
+        responsibilities: ["Plan release calendars", "Coordinate deployment readiness", "Manage release risk", "Communicate status and rollback plans"],
+        beginner: ["SDLC basics", "Change management", "Agile delivery", "Communication"],
+        intermediate: ["CI/CD concepts", "Release notes", "Environment coordination", "Risk assessment"],
+        advanced: ["Enterprise release governance", "Progressive delivery", "Metrics and retrospectives", "Audit-ready release controls"],
+        tools: ["Azure DevOps", "Jira", "GitHub", "ServiceNow", "Confluence"],
+        certifications: ["Scrum Master certification", "AZ-900"],
+        learningPath: ["Understand build and deployment flows", "Coordinate small releases", "Track approvals, defects, and rollback plans", "Improve release metrics and governance"],
+        related: ["DevOps Engineer", "Project Manager", "Scrum Master"]
+      },
+      {
+        title: "Infrastructure Engineer",
+        category: "Cloud & Infrastructure",
+        description: "Designs and maintains servers, storage, virtualization, networking, and automation across on-premises and cloud environments.",
+        responsibilities: ["Manage infrastructure platforms", "Automate server builds", "Monitor capacity and health", "Plan upgrades and lifecycle changes"],
+        beginner: ["Windows Server", "Linux basics", "Networking", "Virtualization concepts"],
+        intermediate: ["VMware or Hyper-V", "PowerShell", "Backup systems", "Patch management"],
+        advanced: ["Hybrid architecture", "Disaster recovery", "Infrastructure automation", "Capacity forecasting"],
+        tools: ["VMware", "Hyper-V", "PowerShell", "Ansible", "Azure Arc"],
+        certifications: ["CompTIA Network+", "AZ-104", "AWS Certified Cloud Practitioner"],
+        learningPath: ["Build server and networking foundations", "Administer virtual machines and backups", "Automate common infrastructure tasks", "Design a hybrid recovery plan"],
+        related: ["Systems Administrator", "Cloud Engineer", "Network Engineer"]
+      },
+      {
+        title: "Systems Administrator",
+        category: "IT Support & Networking",
+        description: "Runs core IT systems including servers, directories, endpoint services, backups, patches, and operational monitoring.",
+        responsibilities: ["Administer servers and directories", "Manage patching and backups", "Monitor system health", "Resolve escalated support issues"],
+        beginner: ["Windows Server", "Linux basics", "Active Directory", "Troubleshooting"],
+        intermediate: ["Group Policy", "PowerShell", "Backup and restore", "Monitoring"],
+        advanced: ["Identity architecture", "Automation", "Disaster recovery", "Hybrid management"],
+        tools: ["Active Directory", "PowerShell", "Intune", "Windows Admin Center", "VMware"],
+        certifications: ["CompTIA A+", "CompTIA Network+", "AZ-104"],
+        learningPath: ["Learn endpoint and server administration", "Practice directory and permission management", "Automate maintenance tasks", "Document recovery and escalation procedures"],
+        related: ["IT Support Specialist", "Infrastructure Engineer", "Database Administrator"]
+      },
+      {
+        title: "Network Engineer",
+        category: "IT Support & Networking",
+        description: "Designs, implements, and troubleshoots networks that connect users, data centers, cloud services, and branch locations.",
+        responsibilities: ["Configure routing and switching", "Troubleshoot connectivity", "Maintain firewall and VPN rules", "Document network topology"],
+        beginner: ["OSI model", "IP addressing", "Switching basics", "Wireless fundamentals"],
+        intermediate: ["Routing protocols", "VLANs", "Firewalls", "VPNs"],
+        advanced: ["SD-WAN", "Network automation", "Cloud networking", "High availability design"],
+        tools: ["Cisco IOS", "Wireshark", "Meraki", "SolarWinds", "Packet Tracer"],
+        certifications: ["Cisco CCNA", "CompTIA Network+", "CompTIA Security+"],
+        learningPath: ["Practice subnetting and packet analysis", "Configure lab switches and routers", "Troubleshoot firewalls and VPNs", "Automate network documentation and checks"],
+        related: ["Network Administrator", "Cloud Engineer", "Cybersecurity Analyst"]
+      },
+      {
+        title: "Network Administrator",
+        category: "IT Support & Networking",
+        description: "Operates day-to-day network services including LAN, WAN, Wi-Fi, VPN, DHCP, DNS, and network device health.",
+        responsibilities: ["Monitor network availability", "Handle access and configuration changes", "Troubleshoot user connectivity", "Maintain network documentation"],
+        beginner: ["IP addressing", "DNS and DHCP", "Wi-Fi basics", "Ticket handling"],
+        intermediate: ["Switch configuration", "Firewall rule changes", "VPN support", "Monitoring alerts"],
+        advanced: ["Network segmentation", "Wireless tuning", "Change control", "Automation scripts"],
+        tools: ["Cisco Meraki", "Ubiquiti", "Wireshark", "PRTG", "Cisco IOS"],
+        certifications: ["CompTIA Network+", "Cisco CCNA", "CompTIA Security+"],
+        learningPath: ["Learn network fundamentals", "Support DNS, DHCP, and Wi-Fi issues", "Administer switches and firewalls", "Create change-controlled network operations procedures"],
+        related: ["Network Engineer", "IT Support Specialist", "Systems Administrator"]
+      },
+      {
+        title: "Identity and Access Administrator",
+        category: "Cloud & Infrastructure",
+        description: "Manages identity platforms, access policies, authentication methods, lifecycle workflows, and privileged access.",
+        responsibilities: ["Administer Entra ID users and groups", "Implement MFA and conditional access", "Manage privileged roles", "Review access governance"],
+        beginner: ["Identity concepts", "RBAC", "MFA", "Directory basics"],
+        intermediate: ["Conditional access", "SSO", "Privileged identity management", "Lifecycle workflows"],
+        advanced: ["Zero trust identity design", "Access reviews", "Hybrid identity", "Identity threat response"],
+        tools: ["Microsoft Entra ID", "Azure Portal", "Intune", "PowerShell", "Defender for Identity"],
+        certifications: ["SC-900", "AZ-104", "SC-200"],
+        learningPath: ["Learn authentication and authorization basics", "Configure users, groups, and MFA", "Implement conditional access and PIM", "Design identity governance for a workforce"],
+        related: ["Azure Engineer", "Security Engineer", "IT Support Specialist"]
+      },
+      {
+        title: "Solutions Architect",
+        category: "Cloud & Infrastructure",
+        description: "Designs end-to-end technology solutions that balance business goals, security, reliability, scalability, and cost.",
+        responsibilities: ["Translate requirements into architecture", "Select platform services", "Document tradeoffs", "Guide implementation teams"],
+        beginner: ["Cloud fundamentals", "Networking", "Application architecture", "Security basics"],
+        intermediate: ["Well-architected frameworks", "Integration patterns", "Cost estimation", "Availability design"],
+        advanced: ["Enterprise architecture", "Migration strategy", "Multi-cloud patterns", "Architecture governance"],
+        tools: ["Azure Architecture Center", "AWS Well-Architected Tool", "Lucidchart", "Terraform", "Power BI"],
+        certifications: ["AZ-305", "AWS Solutions Architect Associate", "AZ-104"],
+        learningPath: ["Learn platform services and design tradeoffs", "Create architecture diagrams", "Apply well-architected reviews", "Lead a solution design from requirements to delivery"],
+        related: ["Cloud Engineer", "Data Architect", "Product Owner"]
+      },
+      {
+        title: "Kubernetes Administrator",
+        category: "Cloud & Infrastructure",
+        description: "Operates container platforms, cluster resources, networking, storage, security policies, and workload reliability.",
+        responsibilities: ["Manage Kubernetes clusters", "Deploy and troubleshoot workloads", "Configure ingress and storage", "Monitor cluster health and security"],
+        beginner: ["Containers", "Linux", "YAML", "Networking basics"],
+        intermediate: ["Pods and deployments", "Services and ingress", "Helm", "Cluster monitoring"],
+        advanced: ["RBAC and policies", "Autoscaling", "Service mesh", "Multi-cluster operations"],
+        tools: ["Kubernetes", "kubectl", "Helm", "Prometheus", "Argo CD"],
+        certifications: ["AZ-104", "AWS Solutions Architect Associate"],
+        learningPath: ["Learn containers and Kubernetes objects", "Deploy applications with Helm", "Add monitoring, ingress, and storage", "Harden and scale a production-style cluster"],
+        related: ["DevOps Engineer", "Platform Engineer", "Cloud Engineer"]
+      },
+      {
+        title: "Help Desk Technician",
+        category: "IT Support & Networking",
+        description: "Provides first-line technical support for users, devices, accounts, productivity tools, and common connectivity issues.",
+        responsibilities: ["Answer support requests", "Reset passwords and unlock accounts", "Troubleshoot devices and software", "Escalate complex incidents"],
+        beginner: ["Customer service", "Windows and macOS basics", "Password resets", "Ticket documentation"],
+        intermediate: ["Microsoft 365 support", "Basic networking", "Device imaging", "Remote troubleshooting"],
+        advanced: ["Knowledge base ownership", "Endpoint management", "Support metrics", "Automation of common fixes"],
+        tools: ["ServiceNow", "Microsoft 365 Admin Center", "Intune", "Remote Desktop", "Teams"],
+        certifications: ["CompTIA A+", "CompTIA Network+", "AZ-900"],
+        learningPath: ["Learn support workflows", "Practice common account and device fixes", "Document repeatable solutions", "Build toward endpoint or systems administration"],
+        related: ["IT Support Specialist", "Systems Administrator", "Network Administrator"]
+      },
+      {
+        title: "Endpoint Administrator",
+        category: "IT Support & Networking",
+        description: "Manages laptops, desktops, mobile devices, policies, updates, applications, and security baselines at scale.",
+        responsibilities: ["Deploy device configuration profiles", "Package and deploy applications", "Manage updates", "Investigate endpoint compliance issues"],
+        beginner: ["Windows client", "Device enrollment", "Basic scripting", "User support"],
+        intermediate: ["Intune policies", "Autopilot", "Patch management", "Endpoint security baselines"],
+        advanced: ["Zero touch provisioning", "Application packaging automation", "Compliance reporting", "Endpoint analytics"],
+        tools: ["Microsoft Intune", "Autopilot", "PowerShell", "Defender for Endpoint", "Microsoft 365 Admin Center"],
+        certifications: ["CompTIA A+", "AZ-900", "AZ-104"],
+        learningPath: ["Learn device lifecycle basics", "Enroll and configure managed devices", "Deploy apps and updates", "Automate compliance and reporting"],
+        related: ["IT Support Specialist", "Systems Administrator", "Security Engineer"]
+      },
+      {
+        title: "IT Manager",
+        category: "Product & Project Management",
+        description: "Leads IT operations, service quality, budgets, vendors, people, and technology roadmaps for an organization.",
+        responsibilities: ["Manage IT team priorities", "Own service performance", "Plan budgets and vendors", "Report risk and progress to leadership"],
+        beginner: ["IT operations", "Communication", "Basic budgeting", "Service desk metrics"],
+        intermediate: ["Vendor management", "ITIL practices", "Roadmap planning", "Risk management"],
+        advanced: ["Technology strategy", "Org design", "Portfolio governance", "Executive communication"],
+        tools: ["ServiceNow", "Power BI", "Microsoft 365", "Jira", "Excel"],
+        certifications: ["Scrum Master certification", "CompTIA Security+", "AZ-900"],
+        learningPath: ["Build operational knowledge", "Lead small initiatives and vendor tasks", "Track service metrics and budgets", "Create a roadmap tied to business outcomes"],
+        related: ["Project Manager", "GRC Analyst", "Systems Administrator"]
+      },
+      {
+        title: "Project Manager",
+        category: "Product & Project Management",
+        description: "Plans and coordinates technology projects across scope, schedule, budget, risks, dependencies, and stakeholder communication.",
+        responsibilities: ["Create project plans", "Track risks and dependencies", "Coordinate delivery teams", "Report status and decisions"],
+        beginner: ["Project lifecycle", "Meeting facilitation", "Task tracking", "Risk logs"],
+        intermediate: ["Agile and waterfall delivery", "Budget tracking", "Dependency management", "Stakeholder reporting"],
+        advanced: ["Program governance", "Vendor delivery", "Portfolio prioritization", "Recovery planning"],
+        tools: ["Microsoft Project", "Jira", "Azure Boards", "Excel", "Power BI"],
+        certifications: ["Scrum Master certification", "AZ-900"],
+        learningPath: ["Learn project planning fundamentals", "Run status, risk, and dependency routines", "Coordinate a cross-functional delivery", "Build dashboards for project health"],
+        related: ["Product Owner", "Release Manager", "Technical Program Manager"]
+      },
+      {
+        title: "Scrum Master",
+        category: "Product & Project Management",
+        description: "Helps agile teams improve flow, collaboration, delivery predictability, and continuous improvement practices.",
+        responsibilities: ["Facilitate agile ceremonies", "Remove delivery blockers", "Coach team practices", "Track flow and improvement actions"],
+        beginner: ["Scrum framework", "Facilitation", "Team communication", "Backlog basics"],
+        intermediate: ["Flow metrics", "Retrospective design", "Conflict resolution", "Agile coaching"],
+        advanced: ["Scaling agile", "Organizational change", "Delivery forecasting", "Leadership coaching"],
+        tools: ["Jira", "Azure Boards", "Miro", "Confluence", "Power BI"],
+        certifications: ["Scrum Master certification"],
+        learningPath: ["Study agile values and Scrum events", "Facilitate team ceremonies", "Use metrics to identify bottlenecks", "Coach teams through continuous improvement"],
+        related: ["Product Owner", "Project Manager", "Release Manager"]
+      },
+      {
+        title: "Technical Program Manager",
+        category: "Product & Project Management",
+        description: "Coordinates complex technical initiatives across multiple teams, aligning architecture, delivery, dependencies, and outcomes.",
+        responsibilities: ["Align technical roadmaps", "Manage cross-team dependencies", "Drive decision-making", "Communicate delivery health to leadership"],
+        beginner: ["Project planning", "Technical literacy", "Stakeholder management", "Risk tracking"],
+        intermediate: ["System design conversations", "Dependency mapping", "Program dashboards", "Roadmap facilitation"],
+        advanced: ["Portfolio strategy", "Architecture tradeoff leadership", "Executive reporting", "Large-scale change delivery"],
+        tools: ["Jira", "Azure Boards", "Confluence", "Miro", "Power BI"],
+        certifications: ["Scrum Master certification", "AZ-900", "AWS Certified Cloud Practitioner"],
+        learningPath: ["Build technical delivery fluency", "Coordinate multi-team plans", "Create dependency and risk systems", "Lead a complex platform or migration program"],
+        related: ["Project Manager", "Solutions Architect", "Product Owner"]
+      },
+      {
+        title: "AI Engineer",
+        category: "AI & Automation",
+        description: "Builds AI-powered applications by integrating models, APIs, retrieval systems, evaluation workflows, and production services.",
+        responsibilities: ["Design AI application architecture", "Integrate LLM and ML model APIs", "Build retrieval augmented generation workflows", "Evaluate quality, cost, latency, and safety"],
+        beginner: ["Python", "API fundamentals", "Prompting basics", "JSON and data formats"],
+        intermediate: ["Embeddings", "RAG patterns", "Model evaluation", "Vector search"],
+        advanced: ["Agentic workflows", "LLM observability", "Safety guardrails", "Production AI system design"],
+        tools: ["Python", "OpenAI API", "Azure AI Foundry", "LangChain", "Pinecone"],
+        certifications: ["AI-900", "AZ-900", "AWS Certified Cloud Practitioner"],
+        learningPath: ["Build Python and API foundations", "Create a small LLM app with structured outputs", "Add retrieval over documents", "Evaluate model quality and deploy with monitoring"],
+        related: ["Generative AI Engineer", "Machine Learning Engineer", "Backend Developer"]
+      },
+      {
+        title: "Generative AI Engineer",
+        category: "AI & Automation",
+        description: "Specializes in LLM applications, prompt systems, retrieval pipelines, agents, evaluation, and deployment of generative AI features.",
+        responsibilities: ["Design prompt and tool-use workflows", "Implement RAG and agent patterns", "Create evaluation datasets", "Optimize model cost and latency"],
+        beginner: ["Prompt engineering", "Python basics", "LLM concepts", "API integration"],
+        intermediate: ["Function calling", "Embeddings", "RAG pipelines", "Evaluation rubrics"],
+        advanced: ["Multi-agent orchestration", "Fine-tuning strategy", "LLM security", "Automated eval pipelines"],
+        tools: ["OpenAI API", "Azure OpenAI", "LangGraph", "LlamaIndex", "Weaviate"],
+        certifications: ["AI-900", "AZ-900", "AWS Solutions Architect Associate"],
+        learningPath: ["Learn LLM capabilities and limits", "Build chat and retrieval prototypes", "Add tool use and structured outputs", "Deploy an evaluated GenAI workflow with monitoring"],
+        related: ["AI Engineer", "Prompt Engineer", "MLOps Engineer"]
+      },
+      {
+        title: "Prompt Engineer",
+        category: "AI & Automation",
+        description: "Designs, tests, and improves prompt systems that produce reliable, safe, and useful model outputs for business workflows.",
+        responsibilities: ["Create prompt templates", "Run prompt experiments", "Document model behavior", "Partner with product and engineering on AI workflows"],
+        beginner: ["Prompt patterns", "Task decomposition", "Writing clarity", "Model limitations"],
+        intermediate: ["Structured outputs", "Few-shot examples", "Evaluation datasets", "Workflow mapping"],
+        advanced: ["Prompt versioning", "Red-team testing", "Tool-use design", "Domain-specific evaluation"],
+        tools: ["OpenAI Playground", "Azure AI Foundry", "Notion", "PromptLayer", "Google Sheets"],
+        certifications: ["AI-900", "Scrum Master certification"],
+        learningPath: ["Practice prompt patterns across tasks", "Create reusable prompt templates", "Measure output quality with examples", "Collaborate on a production AI feature"],
+        related: ["Generative AI Engineer", "AI Product Manager", "Business Analyst"]
+      },
+      {
+        title: "NLP Engineer",
+        category: "AI & Automation",
+        description: "Builds natural language systems for classification, extraction, semantic search, summarization, translation, and conversational workflows.",
+        responsibilities: ["Prepare text datasets", "Train or adapt language models", "Build NLP pipelines", "Evaluate language model performance"],
+        beginner: ["Python", "Text preprocessing", "Linguistic basics", "Model metrics"],
+        intermediate: ["Transformers", "Embeddings", "Named entity recognition", "Text classification"],
+        advanced: ["Fine-tuning", "Multilingual NLP", "Information extraction", "Model compression"],
+        tools: ["Python", "Hugging Face", "spaCy", "PyTorch", "MLflow"],
+        certifications: ["AI-900", "Google Professional Data Engineer"],
+        learningPath: ["Process and clean text data", "Build classification and extraction models", "Use transformer embeddings", "Deploy an NLP service with evaluation metrics"],
+        related: ["Data Scientist", "Machine Learning Engineer", "AI Engineer"]
+      },
+      {
+        title: "Computer Vision Engineer",
+        category: "AI & Automation",
+        description: "Develops image and video AI systems for detection, classification, segmentation, quality inspection, and visual automation.",
+        responsibilities: ["Prepare image datasets", "Train and evaluate vision models", "Deploy inference pipelines", "Monitor model drift and accuracy"],
+        beginner: ["Python", "Image processing", "Dataset labeling", "Model metrics"],
+        intermediate: ["CNNs and vision transformers", "Object detection", "Segmentation", "Data augmentation"],
+        advanced: ["Edge inference", "Real-time video pipelines", "Synthetic data", "Model optimization"],
+        tools: ["Python", "OpenCV", "PyTorch", "Roboflow", "Azure Machine Learning"],
+        certifications: ["AI-900", "AWS Solutions Architect Associate"],
+        learningPath: ["Learn image preprocessing", "Train a classifier and detector", "Evaluate precision and recall", "Deploy a monitored vision inference endpoint"],
+        related: ["Machine Learning Engineer", "Data Scientist", "MLOps Engineer"]
+      },
+      {
+        title: "MLOps Engineer",
+        category: "AI & Automation",
+        description: "Operationalizes machine learning and AI systems through pipelines, deployment automation, monitoring, governance, and reproducibility.",
+        responsibilities: ["Automate training and deployment", "Manage model registries", "Monitor model performance", "Create reproducible ML workflows"],
+        beginner: ["Python", "Git", "Docker", "ML lifecycle basics"],
+        intermediate: ["CI/CD for ML", "Model registries", "Feature pipelines", "Experiment tracking"],
+        advanced: ["Model monitoring", "Drift detection", "Kubernetes serving", "Governed release workflows"],
+        tools: ["MLflow", "Docker", "Kubernetes", "GitHub Actions", "Azure Machine Learning"],
+        certifications: ["AI-900", "DP-203", "AZ-104"],
+        learningPath: ["Learn ML lifecycle concepts", "Track experiments and package models", "Automate training and deployment", "Add monitoring, rollback, and governance"],
+        related: ["Machine Learning Engineer", "DevOps Engineer", "AI Engineer"]
+      },
+      {
+        title: "AI Product Manager",
+        category: "AI & Automation",
+        description: "Shapes AI products by aligning user needs, model capabilities, risk, evaluation, delivery scope, and measurable business outcomes.",
+        responsibilities: ["Define AI product opportunities", "Prioritize AI use cases", "Set evaluation and success metrics", "Coordinate legal, security, design, and engineering reviews"],
+        beginner: ["AI fundamentals", "User discovery", "Agile product practices", "Metric definition"],
+        intermediate: ["Model capability assessment", "AI risk framing", "Experiment planning", "Prompt and workflow review"],
+        advanced: ["AI product strategy", "Responsible AI governance", "Portfolio prioritization", "Adoption and change management"],
+        tools: ["Jira", "Miro", "Power BI", "Azure AI Foundry", "Figma"],
+        certifications: ["AI-900", "Scrum Master certification", "PL-300"],
+        learningPath: ["Learn AI capabilities and limitations", "Identify high-value use cases", "Define evaluation and risk controls", "Launch and measure an AI-assisted workflow"],
+        related: ["Product Owner", "Prompt Engineer", "Responsible AI Specialist"]
+      },
+      {
+        title: "Responsible AI Specialist",
+        category: "AI & Automation",
+        description: "Creates governance, evaluation, documentation, and risk controls for safe, fair, explainable, and compliant AI systems.",
+        responsibilities: ["Assess AI risks", "Document model and data usage", "Coordinate reviews and approvals", "Define monitoring and escalation processes"],
+        beginner: ["AI ethics basics", "Privacy concepts", "Risk assessment", "Documentation"],
+        intermediate: ["Bias testing", "Model cards", "Policy mapping", "Human-in-the-loop controls"],
+        advanced: ["AI governance frameworks", "Regulatory readiness", "Red-team programs", "Enterprise AI assurance"],
+        tools: ["Microsoft Purview", "Azure AI Foundry", "Power BI", "ServiceNow GRC", "Excel"],
+        certifications: ["AI-900", "SC-900", "CompTIA Security+"],
+        learningPath: ["Study responsible AI principles", "Map AI risks to controls", "Create model documentation and review workflows", "Build monitoring and escalation practices"],
+        related: ["AI Product Manager", "GRC Analyst", "Cybersecurity Analyst"]
+      }
+    ];
+
+    const byTitle = new Map(roles.map(role => [role.title, role]));
+    const categoryByName = new Map(categories.map(category => [category.name, category]));
+    const canvas = document.getElementById("roleCanvas");
+    const ctx = canvas.getContext("2d");
+    const detail = document.getElementById("detail");
+    const filters = document.getElementById("filters");
+    const search = document.getElementById("search");
+    const roleList = document.getElementById("roleList");
+    const legend = document.getElementById("legend");
+    const roadmap = document.getElementById("roadmap");
+    const emptyState = document.getElementById("emptyState");
+    const metricCategories = document.getElementById("metricCategories");
+    const metricRoles = document.getElementById("metricRoles");
+    const metricCerts = document.getElementById("metricCerts");
+    let activeCategory = "All";
+    let activeView = "overview";
+    let selectedRole = roles[0];
+    let visibleRoles = [...roles];
+    let nodeLayout = [];
+    let clusterLayout = [];
+    let particles = [];
+    let hoveredRole = null;
+    let view = { scale: 1, x: 0, y: 0 };
+    let isPanning = false;
+    let panStart = { x: 0, y: 0 };
+    let panOrigin = { x: 0, y: 0 };
+    let pointerMoved = false;
+    let animationFrame = 0;
+
+    metricCategories.textContent = categories.length;
+    metricRoles.textContent = roles.length;
+    metricCerts.textContent = new Set(roles.flatMap(role => role.certifications)).size;
+
+    function roleColor(role) {
+      return categoryByName.get(role.category).color;
+    }
+
+    function searchableText(role) {
+      return [
+        role.title,
+        role.category,
+        role.description,
+        ...role.responsibilities,
+        ...role.beginner,
+        ...role.intermediate,
+        ...role.advanced,
+        ...role.tools,
+        ...role.certifications,
+        ...role.learningPath,
+        ...role.related
+      ].join(" ").toLowerCase();
+    }
+
+    function matchesState(role) {
+      const query = search.value.trim().toLowerCase();
+      const categoryMatch = activeCategory === "All" || role.category === activeCategory;
+      const searchMatch = !query || searchableText(role).includes(query);
+      return categoryMatch && searchMatch;
+    }
+
+    function renderFilters() {
+      const all = [{ name: "All", color: "#edf4ff" }, ...categories];
+      filters.innerHTML = all.map(category => (
+        `<button class="filter ${category.name === activeCategory ? "active" : ""}" style="--color:${category.color}" data-category="${category.name}">${category.name}</button>`
+      )).join("");
+    }
+
+    function roleLevel(role) {
+      const advancedTitles = ["Architect", "Manager", "Owner", "Technical Program Manager", "Data Scientist", "Machine Learning Engineer", "Cloud Security Engineer", "Security Engineer", "Penetration Tester", "Site Reliability Engineer", "Platform Engineer", "Responsible AI Specialist", "AI Product Manager"];
+      const beginnerTitles = ["Analyst", "Frontend Developer", "Backend Developer", "Help Desk Technician", "IT Support Specialist", "Network Administrator", "Endpoint Administrator"];
+      if (advancedTitles.some(title => role.title.includes(title))) {
+        return { label: "Advanced", color: "#ff7c78" };
+      }
+      if (beginnerTitles.some(title => role.title.includes(title))) {
+        return { label: "Beginner", color: "#4ee391" };
+      }
+      if (role.title.includes("Engineer") || role.title.includes("Administrator") || role.title.includes("Developer")) {
+        return { label: "Intermediate", color: "#c084fc" };
+      }
+      return { label: "Beginner", color: "#4ee391" };
+    }
+
+    function renderRoadmap() {
+      const grouped = categories.map(category => ({
+        ...category,
+        roles: visibleRoles.filter(role => role.category === category.name)
+      })).filter(group => group.roles.length);
+
+      roadmap.innerHTML = grouped.map(group => `
+        <section class="domainPanel" style="--domain-color:${group.color}">
+          <h2>${group.name}</h2>
+          <div class="domainCards">
+            ${group.roles.map(role => renderRoadmapCard(role)).join("")}
+          </div>
+        </section>
+      `).join("");
+    }
+
+    function renderRoadmapCard(role) {
+      const level = roleLevel(role);
+      const color = roleColor(role);
+      return `
+        <button type="button" class="roleCard ${role.title === selectedRole.title ? "active" : ""}" style="--domain-color:${color};--level-color:${level.color}" data-role="${role.title}">
+          <span class="roleCardTop">
+            <span class="roleIcon">${roleIconSvg(role.category)}</span>
+            <span class="roleTitle">${role.title}</span>
+            <span class="kebab">⋮</span>
+          </span>
+          <span class="levelPill">${level.label}</span>
+          <span class="certLabel">Certifications</span>
+          <span class="roadCerts">${role.certifications.slice(0, 3).map(cert => `<span class="roadCert">${cert}</span>`).join("")}</span>
+        </button>
+      `;
+    }
+
+    function roleIconSvg(category) {
+      const common = `width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"`;
+      const icons = {
+        "Data & Analytics": `<svg ${common}><path d="M4 19V9"/><path d="M10 19V5"/><path d="M16 19v-7"/><path d="M22 19H2"/></svg>`,
+        "Software Development": `<svg ${common}><path d="m8 9-4 3 4 3"/><path d="m16 9 4 3-4 3"/><path d="m14 5-4 14"/></svg>`,
+        "Cloud & Infrastructure": `<svg ${common}><path d="M17.5 19H8a5 5 0 1 1 1.1-9.9A6 6 0 0 1 21 11.5a3.5 3.5 0 0 1-3.5 7.5Z"/></svg>`,
+        "Cybersecurity": `<svg ${common}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>`,
+        "DevOps": `<svg ${common}><path d="M7 7a5 5 0 0 1 8 0l2 2a5 5 0 0 1-7 7l-1-1"/><path d="M17 17a5 5 0 0 1-8 0l-2-2a5 5 0 0 1 7-7l1 1"/></svg>`,
+        "AI & Automation": `<svg ${common}><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93 7.76 7.76"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/><circle cx="12" cy="12" r="4"/><path d="M10.5 11.5h3v3"/></svg>`,
+        "IT Support & Networking": `<svg ${common}><path d="M12 4v5"/><path d="M6 20v-4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v4"/><rect x="9" y="9" width="6" height="4" rx="1"/><path d="M4 20h16"/></svg>`,
+        "Product & Project Management": `<svg ${common}><path d="M4 6h16"/><path d="M4 12h10"/><path d="M4 18h7"/><path d="m16 16 2 2 4-5"/></svg>`
+      };
+      return icons[category] || icons["Software Development"];
+    }
+
+    function renderLegend() {
+      legend.innerHTML = categories.map(category => {
+        const count = roles.filter(role => role.category === category.name).length;
+        return `<div class="legendItem" style="--legend-color:${category.color}"><span class="legendSwatch"></span><span>${category.name} · ${count}</span></div>`;
+      }).join("");
+    }
+
+    function setSelected(role) {
+      selectedRole = role;
+      renderDetail();
+      renderRoleList();
+      renderRoadmap();
+      draw();
+    }
+
+    function renderDetail() {
+      const color = roleColor(selectedRole);
+      detail.style.setProperty("--role-color", color);
+      detail.classList.add("open");
+      detail.innerHTML = `
+        <button type="button" class="detailClose" data-close-detail aria-label="Close role details">×</button>
+        <div class="detailTop">
+          <span class="categoryPill"><span class="dot"></span>${selectedRole.category}</span>
+          <h2>${selectedRole.title}</h2>
+          <p class="description">${selectedRole.description}</p>
+        </div>
+        <div class="viewTabs" role="tablist" aria-label="Role detail views">
+          ${renderViewTab("overview", "Overview")}
+          ${renderViewTab("certs", "Certifications")}
+          ${renderViewTab("skills", "Skill Tree")}
+          ${renderViewTab("compare", "Compare")}
+        </div>
+        <div class="detailBody">
+          ${renderActiveView()}
+        </div>
+      `;
+    }
+
+    function renderViewTab(viewName, label) {
+      return `<button type="button" class="viewTab ${activeView === viewName ? "active" : ""}" data-view="${viewName}" role="tab" aria-selected="${activeView === viewName}">${label}</button>`;
+    }
+
+    function renderActiveView() {
+      if (activeView === "certs") return renderCertificationView();
+      if (activeView === "skills") return renderSkillTreeView();
+      if (activeView === "compare") return renderComparisonView();
+      return renderOverviewView();
+    }
+
+    function renderOverviewView() {
+      return `
+          <section class="section">
+            <h3>Responsibilities</h3>
+            <div class="glassCard"><ul>${selectedRole.responsibilities.map(item => `<li>${item}</li>`).join("")}</ul></div>
+          </section>
+          <section class="section">
+            <h3>Skill Tree</h3>
+            <div class="skillTree">
+              ${renderTier("Beginner", "1", selectedRole.beginner)}
+              ${renderTier("Intermediate", "2", selectedRole.intermediate)}
+              ${renderTier("Advanced", "3", selectedRole.advanced)}
+            </div>
+          </section>
+          <section class="section">
+            <h3>Tools</h3>
+            <div class="glassCard"><div class="chips">${selectedRole.tools.map(item => `<span class="chip">${item}</span>`).join("")}</div></div>
+          </section>
+          <section class="section">
+            <h3>Recommended Certifications</h3>
+            <div class="glassCard"><div class="certs">${selectedRole.certifications.map(item => `<span class="cert">${item}</span>`).join("")}</div></div>
+          </section>
+          <section class="section">
+            <h3>Learning Path</h3>
+            <ol class="path">${selectedRole.learningPath.map(item => `<li>${item}</li>`).join("")}</ol>
+          </section>
+          <section class="section">
+            <h3>Related Roles</h3>
+            <div class="related">${selectedRole.related.map(item => `<button type="button" data-role="${item}">${item}</button>`).join("")}</div>
+          </section>
+      `;
+    }
+
+    function renderCertificationView() {
+      const relatedRoles = comparisonRoles();
+      const certMap = new Map();
+      roles.forEach(role => {
+        role.certifications.forEach(cert => {
+          if (!certMap.has(cert)) certMap.set(cert, []);
+          certMap.get(cert).push(role.title);
+        });
+      });
+      const selectedCerts = selectedRole.certifications.map(cert => `
+        <div class="certCard glassCard">
+          <strong>${cert}</strong>
+          <span>Recommended for ${selectedRole.title}. Also appears in ${Math.max(0, (certMap.get(cert)?.length || 1) - 1)} other role paths.</span>
+        </div>
+      `).join("");
+      const categoryCerts = [...new Set(roles.filter(role => role.category === selectedRole.category).flatMap(role => role.certifications))];
+      return `
+        <section class="section">
+          <h3>Selected Role Certifications</h3>
+          <div class="certGrid">${selectedCerts}</div>
+        </section>
+        <section class="section">
+          <h3>${selectedRole.category} Certification Landscape</h3>
+          <div class="glassCard"><div class="certs">${categoryCerts.map(cert => `<span class="cert">${cert}</span>`).join("")}</div></div>
+        </section>
+        <section class="section">
+          <h3>Nearby Credential Paths</h3>
+          <div class="certGrid">
+            ${relatedRoles.map(role => `
+              <div class="certCard glassCard">
+                <strong>${role.title}</strong>
+                <span>${role.certifications.join(", ")}</span>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderSkillTreeView() {
+      return `
+        <section class="section">
+          <h3>Progressive Skill Tree</h3>
+          <div class="skillMatrix">
+            ${renderSkillRow("Beginner", selectedRole.beginner)}
+            ${renderSkillRow("Intermediate", selectedRole.intermediate)}
+            ${renderSkillRow("Advanced", selectedRole.advanced)}
+          </div>
+        </section>
+        <section class="section">
+          <h3>Tool Practice Targets</h3>
+          <div class="glassCard"><div class="chips">${selectedRole.tools.map(tool => `<span class="chip">${tool}</span>`).join("")}</div></div>
+        </section>
+        <section class="section">
+          <h3>Learning Path</h3>
+          <ol class="path">${selectedRole.learningPath.map(item => `<li>${item}</li>`).join("")}</ol>
+        </section>
+      `;
+    }
+
+    function renderSkillRow(label, skills) {
+      return `
+        <div class="skillRow glassCard">
+          <div class="skillRowLabel">${label}</div>
+          <div class="chips">${skills.map(skill => `<span class="chip">${skill}</span>`).join("")}</div>
+        </div>
+      `;
+    }
+
+    function comparisonRoles() {
+      const related = selectedRole.related.map(title => byTitle.get(title)).filter(Boolean);
+      const sameCategory = roles.filter(role => role.category === selectedRole.category && role.title !== selectedRole.title);
+      const combined = [selectedRole, ...related, ...sameCategory];
+      return [...new Map(combined.map(role => [role.title, role])).values()].slice(0, 4);
+    }
+
+    function renderComparisonView() {
+      const compare = comparisonRoles();
+      return `
+        <section class="section">
+          <h3>Role Comparison</h3>
+          <div class="comparisonWrap">
+            <table class="comparisonTable">
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>Category</th>
+                  <th>Core Skills</th>
+                  <th>Tools</th>
+                  <th>Recommended Certifications</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${compare.map(role => `
+                  <tr>
+                    <td><strong>${role.title}</strong></td>
+                    <td>${role.category}</td>
+                    <td>${role.intermediate.slice(0, 3).join(", ")}</td>
+                    <td>${role.tools.slice(0, 4).join(", ")}</td>
+                    <td>${role.certifications.join(", ")}</td>
+                  </tr>
+                `).join("")}
+              </tbody>
+            </table>
+          </div>
+          <div class="compareCards">
+            ${compare.map(role => `
+              <div class="compareCard glassCard" style="--card-color:${roleColor(role)}">
+                <strong>${role.title}</strong>
+                <span>${role.category}</span>
+                <span><b>Skills:</b> ${role.intermediate.slice(0, 3).join(", ")}</span>
+                <span><b>Tools:</b> ${role.tools.slice(0, 4).join(", ")}</span>
+                <span><b>Certs:</b> ${role.certifications.join(", ")}</span>
+              </div>
+            `).join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    function renderTier(label, number, skills) {
+      return `
+        <div class="tier">
+          <div class="tierLabel">${label}<span>${number}</span></div>
+          <ul>${skills.map(skill => `<li>${skill}</li>`).join("")}</ul>
+        </div>
+      `;
+    }
+
+    function renderRoleList() {
+      roleList.innerHTML = visibleRoles.map(role => (
+        `<button type="button" class="${role.title === selectedRole.title ? "active" : ""}" style="--btn-color:${roleColor(role)}" data-role="${role.title}">${role.title}</button>`
+      )).join("");
+    }
+
+    function applyState() {
+      visibleRoles = roles.filter(matchesState);
+      if (!visibleRoles.includes(selectedRole) && visibleRoles.length) {
+        selectedRole = visibleRoles[0];
+        renderDetail();
+      }
+      emptyState.classList.toggle("show", visibleRoles.length === 0);
+      renderFilters();
+      renderRoleList();
+      renderRoadmap();
+      draw();
+    }
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const dpr = Math.max(1, window.devicePixelRatio || 1);
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      draw();
+    }
+
+    function computeLayout(width, height) {
+      const grouped = categories.map(category => ({
+        ...category,
+        roles: visibleRoles.filter(role => role.category === category.name)
+      })).filter(group => group.roles.length);
+
+      clusterLayout = [];
+      if (!grouped.length) return [];
+
+      if (width < 600) {
+        let y = 92;
+        const nodes = [];
+        grouped.forEach(group => {
+          const rows = Math.ceil(group.roles.length / 2);
+          const clusterHeight = Math.max(170, rows * 86 + 74);
+          const cluster = {
+            name: group.name,
+            color: group.color,
+            x: width / 2,
+            y: y + clusterHeight / 2,
+            rx: width * 0.42,
+            ry: clusterHeight / 2,
+            count: group.roles.length
+          };
+          clusterLayout.push(cluster);
+          group.roles.forEach((role, roleIndex) => {
+            const column = roleIndex % 2;
+            const row = Math.floor(roleIndex / 2);
+            nodes.push({
+              role,
+              x: width * (column ? 0.66 : 0.34),
+              y: y + 68 + row * 86,
+              r: role.title === selectedRole.title ? 18 : 15,
+              color: roleColor(role),
+              cluster
+            });
+          });
+          y += clusterHeight + 42;
+        });
+        return nodes;
+      }
+
+      const cols = width < 1100 ? 2 : 3;
+      const rows = Math.ceil(grouped.length / cols);
+      const cellW = width / cols;
+      const cellH = height / rows;
+      const nodes = [];
+
+      grouped.forEach((group, groupIndex) => {
+        const col = groupIndex % cols;
+        const row = Math.floor(groupIndex / cols);
+        const cx = cellW * col + cellW / 2;
+        const cy = cellH * row + cellH / 2;
+        const rx = Math.max(118, Math.min(cellW * 0.36, 220));
+        const ry = Math.max(92, Math.min(cellH * 0.34, 165));
+        const cluster = { name: group.name, color: group.color, x: cx, y: cy, rx, ry, count: group.roles.length };
+        clusterLayout.push(cluster);
+
+        group.roles.forEach((role, roleIndex) => {
+          const angle = (roleIndex / Math.max(1, group.roles.length)) * Math.PI * 2 - Math.PI / 2;
+          const ring = group.roles.length <= 3 ? 0.42 : 0.55 + (roleIndex % 2) * 0.22;
+          const jitter = Math.sin((roleIndex + 1) * 2.37 + groupIndex) * 10;
+          nodes.push({
+            role,
+            x: cx + Math.cos(angle) * rx * ring + jitter,
+            y: cy + Math.sin(angle) * ry * ring + Math.cos(angle * 2) * 8,
+            r: role.title === selectedRole.title ? 20 : 16,
+            color: roleColor(role),
+            cluster
+          });
+        });
+      });
+
+      return nodes;
+    }
+
+    function ensureParticles(width, height) {
+      const wanted = Math.max(42, Math.min(120, Math.round((width * height) / 9000)));
+      while (particles.length < wanted) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.28,
+          vy: (Math.random() - 0.5) * 0.28,
+          size: Math.random() * 1.8 + 0.6,
+          alpha: Math.random() * 0.38 + 0.12,
+          color: categories[Math.floor(Math.random() * categories.length)].color
+        });
+      }
+      particles = particles.slice(0, wanted);
+    }
+
+    function drawParticles(width, height) {
+      ensureParticles(width, height);
+      ctx.save();
+      particles.forEach((particle, index) => {
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+        if (particle.x < -12) particle.x = width + 12;
+        if (particle.x > width + 12) particle.x = -12;
+        if (particle.y < -12) particle.y = height + 12;
+        if (particle.y > height + 12) particle.y = -12;
+
+        ctx.globalAlpha = particle.alpha;
+        ctx.fillStyle = particle.color;
+        ctx.shadowColor = particle.color;
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        for (let j = index + 1; j < particles.length; j += 1) {
+          const other = particles[j];
+          const dx = particle.x - other.x;
+          const dy = particle.y - other.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 86) {
+            ctx.globalAlpha = (1 - dist / 86) * 0.11;
+            ctx.strokeStyle = particle.color;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(other.x, other.y);
+            ctx.stroke();
+          }
+        }
+      });
+      ctx.restore();
+    }
+
+    function drawGrid(width, height) {
+      ctx.save();
+      ctx.translate(view.x % (38 * view.scale), view.y % (38 * view.scale));
+      ctx.strokeStyle = "rgba(148, 163, 184, 0.07)";
+      ctx.lineWidth = 1;
+      const step = 38 * view.scale;
+      for (let x = -step; x <= width + step; x += step) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, height);
+        ctx.stroke();
+      }
+      for (let y = -step; y <= height + step; y += step) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(width, y);
+        ctx.stroke();
+      }
+      ctx.restore();
+    }
+
+    function drawClusters() {
+      ctx.save();
+      clusterLayout.forEach(cluster => {
+        const highlight = selectedRole.category === cluster.name || hoveredRole?.category === cluster.name;
+        const gradient = ctx.createRadialGradient(cluster.x, cluster.y, 10, cluster.x, cluster.y, Math.max(cluster.rx, cluster.ry));
+        gradient.addColorStop(0, `${cluster.color}${highlight ? "25" : "16"}`);
+        gradient.addColorStop(0.72, `${cluster.color}${highlight ? "12" : "08"}`);
+        gradient.addColorStop(1, `${cluster.color}00`);
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.ellipse(cluster.x, cluster.y, cluster.rx, cluster.ry, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = `${cluster.color}${highlight ? "70" : "36"}`;
+        ctx.setLineDash([8, 10]);
+        ctx.lineWidth = highlight ? 1.8 : 1;
+        ctx.beginPath();
+        ctx.ellipse(cluster.x, cluster.y, cluster.rx, cluster.ry, 0, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        ctx.font = "900 13px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillStyle = cluster.color;
+        ctx.shadowColor = "rgba(0,0,0,0.85)";
+        ctx.shadowBlur = 10;
+        wrapCanvasText(`${cluster.name} (${cluster.count})`, cluster.x, cluster.y - cluster.ry + 24, Math.max(120, cluster.rx * 1.45), 14);
+      });
+      ctx.restore();
+    }
+
+    function drawConnections() {
+      ctx.save();
+      nodeLayout.forEach(node => {
+        node.role.related.forEach(relatedTitle => {
+          const target = nodeLayout.find(item => item.role.title === relatedTitle);
+          if (!target) return;
+          const focused = node.role.title === selectedRole.title || target.role.title === selectedRole.title || node.role.title === hoveredRole?.title || target.role.title === hoveredRole?.title;
+          const sameCluster = node.role.category === target.role.category;
+          ctx.strokeStyle = focused ? `${node.color}cc` : sameCluster ? `${node.color}35` : "rgba(148, 163, 184, 0.16)";
+          ctx.lineWidth = focused ? 2.4 : 1.15;
+          ctx.globalAlpha = focused ? 1 : 0.68;
+          ctx.beginPath();
+          const midX = (node.x + target.x) / 2;
+          const curve = sameCluster ? 42 : 96;
+          const bend = node.x < target.x ? curve : -curve;
+          ctx.moveTo(node.x, node.y);
+          ctx.bezierCurveTo(midX + bend, node.y - curve * 0.35, midX - bend, target.y + curve * 0.35, target.x, target.y);
+          ctx.stroke();
+        });
+      });
+      ctx.restore();
+    }
+
+    function drawLabels(width) {
+      const groups = categories.map(category => ({
+        ...category,
+        nodes: nodeLayout.filter(node => node.role.category === category.name)
+      })).filter(group => group.nodes.length);
+
+      drawClusters();
+    }
+
+    function wrapCanvasText(text, x, y, maxWidth, lineHeight) {
+      const words = text.split(" ");
+      let line = "";
+      let lines = [];
+      words.forEach(word => {
+        const testLine = line ? `${line} ${word}` : word;
+        if (ctx.measureText(testLine).width > maxWidth && line) {
+          lines.push(line);
+          line = word;
+        } else {
+          line = testLine;
+        }
+      });
+      lines.push(line);
+      lines.forEach((item, index) => ctx.fillText(item, x, y + index * lineHeight));
+    }
+
+    function drawNodes() {
+      const tick = performance.now() / 900;
+      nodeLayout.forEach((node, index) => {
+        const selected = node.role.title === selectedRole.title;
+        const hovered = node.role.title === hoveredRole?.title;
+        const relatedFocus = selectedRole.related.includes(node.role.title) || node.role.related.includes(selectedRole.title);
+        const pulse = selected ? 1 + Math.sin(tick + index) * 0.09 : hovered ? 1.12 : 1;
+        const radius = node.r * pulse;
+
+        ctx.save();
+        ctx.shadowColor = node.color;
+        ctx.shadowBlur = selected ? 38 : hovered ? 34 : relatedFocus ? 22 : 15;
+        ctx.fillStyle = node.color;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius, 0, Math.PI * 2);
+        ctx.fill();
+
+        if (selected || hovered) {
+          ctx.globalAlpha = selected ? 0.22 : 0.14;
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, radius + 18 + Math.sin(tick * 2 + index) * 3, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.globalAlpha = 1;
+        }
+
+        ctx.shadowBlur = 0;
+        ctx.fillStyle = selected ? "#071016" : "#0b1119";
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius * 0.54, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = selected ? "#fff" : hovered ? node.color : "rgba(255,255,255,0.55)";
+        ctx.lineWidth = selected ? 3.6 : hovered ? 2.4 : 1.5;
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, radius + 4, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.font = selected || hovered ? "900 13px Inter, sans-serif" : "800 12px Inter, sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillStyle = selected || hovered ? "#ffffff" : "#d5e1f0";
+        ctx.shadowColor = "rgba(0,0,0,0.8)";
+        ctx.shadowBlur = 8;
+        wrapCanvasText(node.role.title, node.x, node.y + radius + 19, 118, 14);
+        ctx.restore();
+      });
+    }
+
+    function draw() {
+      const rect = canvas.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
+      if (!width || !height) return;
+
+      ctx.clearRect(0, 0, width, height);
+      const gradient = ctx.createLinearGradient(0, 0, width, height);
+      gradient.addColorStop(0, "#0c121d");
+      gradient.addColorStop(0.52, "#0a1018");
+      gradient.addColorStop(1, "#10131c");
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, width, height);
+
+      drawParticles(width, height);
+      drawGrid(width, height);
+      nodeLayout = computeLayout(width, height);
+
+      ctx.save();
+      ctx.translate(view.x, view.y);
+      ctx.scale(view.scale, view.scale);
+      drawLabels(width);
+      drawConnections();
+      drawNodes();
+      ctx.restore();
+    }
+
+    function animate() {
+      draw();
+      animationFrame = requestAnimationFrame(animate);
+    }
+
+    function hitTest(event) {
+      const point = screenToWorld(event);
+      const x = point.x;
+      const y = point.y;
+      return nodeLayout.find(node => {
+        const dx = x - node.x;
+        const dy = y - node.y;
+        return Math.sqrt(dx * dx + dy * dy) <= node.r + 20;
+      });
+    }
+
+    function screenToWorld(event) {
+      const rect = canvas.getBoundingClientRect();
+      return {
+        x: (event.clientX - rect.left - view.x) / view.scale,
+        y: (event.clientY - rect.top - view.y) / view.scale
+      };
+    }
+
+    function clampView() {
+      view.scale = Math.max(0.58, Math.min(2.15, view.scale));
+      view.x = Math.max(-900, Math.min(900, view.x));
+      view.y = Math.max(-900, Math.min(900, view.y));
+    }
+
+    canvas.addEventListener("pointerdown", event => {
+      isPanning = true;
+      pointerMoved = false;
+      panStart = { x: event.clientX, y: event.clientY };
+      panOrigin = { x: view.x, y: view.y };
+      canvas.setPointerCapture(event.pointerId);
+    });
+
+    canvas.addEventListener("pointermove", event => {
+      if (isPanning) {
+        const dx = event.clientX - panStart.x;
+        const dy = event.clientY - panStart.y;
+        if (Math.abs(dx) + Math.abs(dy) > 4) pointerMoved = true;
+        view.x = panOrigin.x + dx;
+        view.y = panOrigin.y + dy;
+        clampView();
+        canvas.style.cursor = "grabbing";
+        return;
+      }
+      const hit = hitTest(event);
+      hoveredRole = hit?.role || null;
+      canvas.style.cursor = hit ? "pointer" : "grab";
+    });
+
+    canvas.addEventListener("pointerup", event => {
+      if (isPanning) {
+        isPanning = false;
+        canvas.releasePointerCapture(event.pointerId);
+      }
+      const hit = hitTest(event);
+      if (hit && !pointerMoved) setSelected(hit.role);
+      canvas.style.cursor = hit ? "pointer" : "grab";
+    });
+
+    canvas.addEventListener("pointerleave", () => {
+      hoveredRole = null;
+      isPanning = false;
+      canvas.style.cursor = "grab";
+    });
+
+    canvas.addEventListener("wheel", event => {
+      event.preventDefault();
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = event.clientX - rect.left;
+      const mouseY = event.clientY - rect.top;
+      const before = {
+        x: (mouseX - view.x) / view.scale,
+        y: (mouseY - view.y) / view.scale
+      };
+      const factor = event.deltaY < 0 ? 1.1 : 0.9;
+      view.scale *= factor;
+      clampView();
+      view.x = mouseX - before.x * view.scale;
+      view.y = mouseY - before.y * view.scale;
+      clampView();
+    }, { passive: false });
+
+    canvas.addEventListener("dblclick", () => {
+      view = { scale: 1, x: 0, y: 0 };
+    });
+
+    canvas.addEventListener("click", event => {
+      if (pointerMoved) return;
+      const hit = hitTest(event);
+      if (hit) setSelected(hit.role);
+    });
+
+    filters.addEventListener("click", event => {
+      const button = event.target.closest("button[data-category]");
+      if (!button) return;
+      activeCategory = button.dataset.category;
+      applyState();
+    });
+
+    search.addEventListener("input", applyState);
+
+    roleList.addEventListener("click", event => {
+      const button = event.target.closest("button[data-role]");
+      if (!button) return;
+      const role = byTitle.get(button.dataset.role);
+      if (role) setSelected(role);
+    });
+
+    roadmap.addEventListener("click", event => {
+      const button = event.target.closest("button[data-role]");
+      if (!button) return;
+      const role = byTitle.get(button.dataset.role);
+      if (role) setSelected(role);
+    });
+
+    detail.addEventListener("click", event => {
+      if (event.target.closest("[data-close-detail]")) {
+        detail.classList.remove("open");
+        return;
+      }
+
+      const viewButton = event.target.closest("button[data-view]");
+      if (viewButton) {
+        activeView = viewButton.dataset.view;
+        renderDetail();
+        return;
+      }
+
+      const button = event.target.closest("button[data-role]");
+      if (!button) return;
+      const role = byTitle.get(button.dataset.role);
+      if (!role) return;
+      if (activeCategory !== "All" && role.category !== activeCategory) {
+        activeCategory = "All";
+        renderFilters();
+      }
+      search.value = "";
+      visibleRoles = roles.filter(matchesState);
+      setSelected(role);
+      renderRoleList();
+    });
+
+    window.addEventListener("resize", resizeCanvas);
+
+    renderFilters();
+    renderLegend();
+    renderDetail();
+    applyState();
+    detail.classList.remove("open");
+    resizeCanvas();
+    if (canvas.offsetParent !== null) {
+      animationFrame = requestAnimationFrame(animate);
+    }
+  </script>
+</body>
+</html>
